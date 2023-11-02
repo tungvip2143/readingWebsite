@@ -6,7 +6,7 @@ import { showError } from 'helpers/toast';
 
 import { ResponseGetListTourGuide, TourGuideList } from '../tourGuide.interface';
 import TourGuideServices from '../tourGuide.services';
-import { IInitialValues } from 'app/[locale]/admin/tour-guide/TourGuideTable';
+import { IInitialValues } from 'app/[locale]/admin/articles/ArticlesTable';
 import { TourGuideInfoStatus } from 'constants/common';
 
 /**

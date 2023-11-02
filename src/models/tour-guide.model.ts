@@ -1,6 +1,6 @@
 import { PhoneCode } from 'interfaces/common';
 import { parsePhoneNumber } from 'helpers/phoneNumberFormat';
-import { FormTourGuideValues } from 'app/[locale]/admin/tour-guide/Dialog/AddForm';
+import { FormTourGuideValues } from 'app/[locale]/admin/articles/Dialog/AddForm';
 import { IMG_URL } from 'constants/apiUrls';
 import { DEFAULT_PREFIX_PHONE, Gender, TourGuideInfoStatus, YesOrNoValue } from 'constants/common';
 import {

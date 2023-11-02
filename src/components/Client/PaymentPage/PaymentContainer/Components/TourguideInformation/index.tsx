@@ -34,7 +34,7 @@ const TourGuideInformation = (props: TourGuideInformationProps) => {
   return (
     <CommonStylesClient.Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <CommonStylesClient.Typography type='pcHeading4'>
-        {t('localFriend')}
+        {t('Articles')}
       </CommonStylesClient.Typography>
 
       <CommonStylesClient.Box

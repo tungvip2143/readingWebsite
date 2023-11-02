@@ -23,7 +23,7 @@ const pageUrls = {
   FindTourGuide: '/find-local-friend',
   WaitingAcceptBook: '/waiting-accept-book',
   // Tour guide
-  LocalFriend: {
+  Articles: {
     Home: '/local-friend',
     BookingTour: '/local-friend/booking-tour',
     Profile: '/local-friend/profile',

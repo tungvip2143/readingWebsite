@@ -60,8 +60,10 @@ function DefaultLayoutAdmin({ children }: { children: React.ReactNode }) {
           >
             <CommonStyles.Typography
               sx={{
-                color: !!isActive ? theme.colors?.primary500 : theme.colors?.bgneutral500,
-                fontWeight: !!isActive ? 'bold' : 300,
+                // color: !!isActive ? theme.colors?.primary500 : theme.colors?.bgneutral500,
+                // fontWeight: !!isActive ? 'bold' : 300,
+                color: false ? theme.colors?.primary500 : theme.colors?.bgneutral500,
+                fontWeight: false ? 'bold' : 300,
                 fontSize: '1em',
                 lineHeight: '1.5em',
               }}

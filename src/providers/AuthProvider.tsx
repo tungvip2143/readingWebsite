@@ -145,44 +145,50 @@ export default function AuthProvider(props: { children: React.ReactNode }) {
     httpService.attachTokenToHeader(state.accessToken);
   }, [state.accessToken]);
 
-  const onSignSuccess = useCallback(({ accessToken, user }: { accessToken: string, user: IUser | TourGuide | Vendor}) => {
-    httpService.attachTokenToHeader(accessToken);
-    httpService.saveTokenToLocalStorage(accessToken);
-    httpService.saveUserToStorage(user);
+  const onSignSuccess = useCallback(
+    ({ accessToken, user }: { accessToken: string; user: IUser | TourGuide | Vendor }) => {
+      httpService.attachTokenToHeader(accessToken);
+      httpService.saveTokenToLocalStorage(accessToken);
+      httpService.saveUserToStorage(user);
 
-    broadcastService.channelSwitchUser().postMessageReload();
-  }, []);
+      broadcastService.channelSwitchUser().postMessageReload();
+    },
+    []
+  );
 
-  const signIn = useCallback((body: RequestLogin) => {
-    (async () => {
-      try {
-        setState((prev) => ({
-          ...prev,
-          isLogining: true,
-        }));
-        const response = await loginServices.login(body);
-        const accessToken = response?.data?.data?.accessToken;
-        const user = response?.data?.data?.user;
+  const signIn = useCallback(
+    (body: RequestLogin) => {
+      (async () => {
+        try {
+          setState((prev) => ({
+            ...prev,
+            isLogining: true,
+          }));
+          const response = await loginServices.login(body);
+          const accessToken = response?.data?.data?.accessToken;
+          const user = response?.data?.data?.user;
 
-        setState((prev) => ({
-          ...prev,
-          isLogining: false,
-          isLogged: true,
-          accessToken,
-          user,
-        }));
+          setState((prev) => ({
+            ...prev,
+            isLogining: false,
+            isLogged: true,
+            accessToken,
+            user,
+          }));
 
-        onSignSuccess({ accessToken, user });
-      } catch (error) {
-        showError(error);
-      } finally {
-        setState((prev) => ({
-          ...prev,
-          isLogining: false,
-        }));
-      }
-    })();
-  }, [onSignSuccess]);
+          onSignSuccess({ accessToken, user });
+        } catch (error) {
+          showError(error);
+        } finally {
+          setState((prev) => ({
+            ...prev,
+            isLogining: false,
+          }));
+        }
+      })();
+    },
+    [onSignSuccess]
+  );
 
   const signInPhone = useCallback(
     (body: RequestLoginPhone): Promise<ResponseCommon<ResponseLoginPhone>> => {
@@ -205,7 +211,7 @@ export default function AuthProvider(props: { children: React.ReactNode }) {
               user,
             }));
 
-            onSignSuccess({ accessToken, user })
+            onSignSuccess({ accessToken, user });
             resolve(response);
           } catch (error) {
             reject(error);
@@ -271,7 +277,7 @@ export default function AuthProvider(props: { children: React.ReactNode }) {
               user,
             }));
 
-            onSignSuccess({ accessToken, user: user  })
+            onSignSuccess({ accessToken, user: user });
             resolve(response);
           } catch (error) {
             reject(error);
@@ -421,7 +427,7 @@ export default function AuthProvider(props: { children: React.ReactNode }) {
     []
   );
 
-    const changePasswordEmail = useCallback(
+  const changePasswordEmail = useCallback(
     (body: RequestChangePasswordEmail): Promise<ResponseCommon<ResponseChangePasswordEmail>> => {
       return new Promise((resolve, reject) => {
         (async () => {
@@ -436,7 +442,6 @@ export default function AuthProvider(props: { children: React.ReactNode }) {
     },
     []
   );
-
 
   const signInGoogle = useCallback(
     (body: RequestGoogleLogin): Promise<ResponseCommon<ResponseLoginSocial>> => {
@@ -514,18 +519,21 @@ export default function AuthProvider(props: { children: React.ReactNode }) {
     [onSignSuccess]
   );
 
-  const resendOTP = useCallback((body: RequestResendOTP): Promise<ResponseCommon<ResponseResendOTP>> => {
-    return new Promise((resolve, reject) => {
-      (async () => {
-        try {
-          const response = await forgotPasswordServices.resendOTP(body);
-          resolve(response);
-        } catch (error) {
-          reject(error);
-        }
-      })();
-    });
-  }, []);
+  const resendOTP = useCallback(
+    (body: RequestResendOTP): Promise<ResponseCommon<ResponseResendOTP>> => {
+      return new Promise((resolve, reject) => {
+        (async () => {
+          try {
+            const response = await forgotPasswordServices.resendOTP(body);
+            resolve(response);
+          } catch (error) {
+            reject(error);
+          }
+        })();
+      });
+    },
+    []
+  );
 
   const values = useMemo(() => {
     return {

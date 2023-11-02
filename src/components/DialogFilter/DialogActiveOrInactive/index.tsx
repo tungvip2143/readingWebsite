@@ -42,7 +42,7 @@ const DialogActiveOrInactive = (props: DialogFilterProps) => {
                   <CommonStyles.Box sx={{ width: '100%' }}>
                     <FastField
                       name='isActive'
-                      label={t('Common.filter', { key: t('LocalFriend.status') })}
+                      label={t('Common.filter', { key: t('Articles.status') })}
                       component={CustomFields.SelectField}
                       options={optionsActiveOrDeActive}
                       fullWidth

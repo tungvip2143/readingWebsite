@@ -43,7 +43,7 @@ const SelectPrefixPhone = ({ name, isDisabled }: Props) => {
       size='small'
       component={CustomFields.SelectField}
       name={name}
-      placeholder={t('LocalFriend.phonePrefix')}
+      placeholder={t('Articles.phonePrefix')}
       options={optionProvinces}
       disabled={isDisabled}
       loading={isLoadingListProvince}

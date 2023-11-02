@@ -86,14 +86,14 @@ const ReviewTourOrTourguide = (props: Props) => {
             <CommonStyles.Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
               <RatingAndReview
                 name='ratingTour'
-                labelRating={t('LocalFriend.ratingTour')}
-                labelReview={t('LocalFriend.ratingTourReview')}
+                labelRating={t('Articles.ratingTour')}
+                labelReview={t('Articles.ratingTourReview')}
               />
               <CommonStyles.Divider variant='middle' orientation='vertical' flexItem />
               <RatingAndReview
                 name='ratingTourGuide'
-                labelRating={t('LocalFriend.ratingTourGuide')}
-                labelReview={t('LocalFriend.ratingTourGuideReview')}
+                labelRating={t('Articles.ratingTourGuide')}
+                labelReview={t('Articles.ratingTourGuideReview')}
               />
             </CommonStyles.Box>
             <CommonStyles.Box

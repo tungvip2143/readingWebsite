@@ -13,48 +13,6 @@ const router = () => {
       icon: <CommonIcons.BookIcon />,
       showTab: true,
     },
-    {
-      label: t('Routes.tourManager'),
-      path: pageUrls.TourManager,
-      icon: <CommonIcons.BookIcon />,
-      showTab: true,
-    },
-    {
-      label: t('Routes.localFriendManager'),
-      path: pageUrls.TourGuideManager,
-      icon: <CommonIcons.BookIcon />,
-      showTab: true,
-    },
-    {
-      label: t('Routes.customerManager'),
-      path: pageUrls.CustomerManager,
-      icon: <CommonIcons.Users />,
-      showTab: true,
-    },
-    {
-      label: t('Routes.detailCustomer'),
-      path: pageUrls.DetailCustomer,
-      icon: <CommonIcons.Users />,
-      showTab: false,
-    },
-    {
-      label: t('Routes.campaignManager'),
-      path: pageUrls.CampaignManager,
-      icon: <CommonIcons.BookIcon />,
-      showTab: true,
-    },
-    {
-      label: t('Routes.vendorManager'),
-      path: pageUrls.VendorManager,
-      icon: <CommonIcons.BookIcon />,
-      showTab: true,
-    },
-    {
-      label: t('Routes.bookingManager'),
-      path: pageUrls.BookingManager,
-      icon: <CommonIcons.BookIcon />,
-      showTab: true,
-    },
   ];
 
   const routerUser = [
@@ -87,13 +45,13 @@ const router = () => {
   const routerTourGuide = [
     {
       label: t('Routes.home'),
-      path: pageUrls.LocalFriend.Home,
+      path: pageUrls.Articles.Home,
       icon: <CommonIconsClient.IconHome />,
       showTab: true,
     },
     {
       label: t('Routes.registerTour'),
-      path: pageUrls.LocalFriend.BookingTour,
+      path: pageUrls.Articles.BookingTour,
       icon: <CommonIconsClient.IconUser />,
       showTab: true,
     },

@@ -97,9 +97,9 @@ const PersonalInformation = (props: PersonalInformationProps) => {
     // currentResidence: Yup.string().required(
     //   t('Validation.empty', { name: t('Profile.currentResidence') })
     // ),
-    phoneCode: Yup.string().required(t('Validation.empty', { name: t('LocalFriend.phonePrefix') })),
+    phoneCode: Yup.string().required(t('Validation.empty', { name: t('Articles.phonePrefix') })),
     // phoneEmergencyCode: Yup.string().required(
-    //   t('Validation.empty', { name: t('LocalFriend.phonePrefix') })
+    //   t('Validation.empty', { name: t('Articles.phonePrefix') })
     // ),
     provinceCity: Yup.array().min(1, t('Validation.empty', { name: t('Profile.tourDestination') })),
     // nameEmergency: Yup.string().required(t('Validation.empty', { name: t('Profile.fullname') })),
@@ -107,21 +107,21 @@ const PersonalInformation = (props: PersonalInformationProps) => {
     //   .required(t('Validation.empty', { name: t('Profile.phone') }))
     //   .matches(/^[0-9]{10,12}$/, t('Validation.validPhone')),
     // relationship: Yup.string().required(t('Validation.empty', { name: t('Profile.relationship') })),
-    avatar: Yup.string().required(t('Validation.empty', { name: t('LocalFriend.avatar') })),
+    avatar: Yup.string().required(t('Validation.empty', { name: t('Articles.avatar') })),
     // accountNumber: Yup.string()
-    //   .required(t('Validation.empty', { name: t('LocalFriend.accountNumber') }))
+    //   .required(t('Validation.empty', { name: t('Articles.accountNumber') }))
     //   .matches(/^[0-9]{8,15}$/, t('Validation.accountBank')),
     // beneficiaryName: Yup.string().required(
-    //   t('Validation.empty', { name: t('LocalFriend.beneficiaryName') })
+    //   t('Validation.empty', { name: t('Articles.beneficiaryName') })
     // ),
-    // bankName: Yup.string().required(t('Validation.empty', { name: t('LocalFriend.bankName') })),
+    // bankName: Yup.string().required(t('Validation.empty', { name: t('Articles.bankName') })),
     email: Yup.string()
       .required(t('Validation.empty', { name: t('Profile.email') }))
       .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, t('Validation.emailFormat')),
     // bio: Yup.string().required(t('Validation.empty', { name: t('Profile.bio') })),
     citizenIdCardImage: Yup.array()
-      .min(2, t('LocalFriend.citizenIdCardImageValidate'))
-      .required(t('Validation.empty', { name: t('LocalFriend.citizenIdCardImage') })),
+      .min(2, t('Articles.citizenIdCardImageValidate'))
+      .required(t('Validation.empty', { name: t('Articles.citizenIdCardImage') })),
     // filesUpload: Yup.array()
     //   .of(
     //     Yup.object()

@@ -61,7 +61,7 @@ const DialogLogin = (props: DialogLoginProps) => {
 
     phoneCode: Yup.string().when('method', ([method]) => {
       return method === Method.PHONE
-        ? Yup.string().required(t('Validation.empty', { name: t('LocalFriend.phonePrefix') }))
+        ? Yup.string().required(t('Validation.empty', { name: t('Articles.phonePrefix') }))
         : Yup.string();
     }),
     phoneNumber: Yup.string().when('method', ([method]) => {
@@ -79,7 +79,7 @@ const DialogLogin = (props: DialogLoginProps) => {
     email: Yup.string().when('method', ([method]) => {
       return method === Method.EMAIL
         ? Yup.string()
-            .required(t('Validation.empty', { name: t('LocalFriend.email') }))
+            .required(t('Validation.empty', { name: t('Articles.email') }))
             .matches(EMAIL_REGEX, t('Validation.emailFormat'))
         : Yup.string();
     }),

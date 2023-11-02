@@ -117,7 +117,7 @@ const LoginLocalFriend = (props: LoginLocalFriendProps) => {
 
     phoneCode: Yup.string().when('method', ([method]) => {
       return method === Method.PHONE
-        ? Yup.string().required(t('Validation.empty', { name: t('LocalFriend.phonePrefix') }))
+        ? Yup.string().required(t('Validation.empty', { name: t('Articles.phonePrefix') }))
         : Yup.string();
     }),
     phoneNumber: Yup.string().when('method', ([method]) => {
@@ -135,7 +135,7 @@ const LoginLocalFriend = (props: LoginLocalFriendProps) => {
     email: Yup.string().when('method', ([method]) => {
       return method === Method.EMAIL
         ? Yup.string()
-            .required(t('Validation.empty', { name: t('LocalFriend.email') }))
+            .required(t('Validation.empty', { name: t('Articles.email') }))
             .matches(EMAIL_REGEX, t('Validation.emailFormat'))
         : Yup.string();
     }),
@@ -153,7 +153,7 @@ const LoginLocalFriend = (props: LoginLocalFriendProps) => {
     if (isLogged && !!role) {
       const redirectHandler = new Map<Roles, () => void>();
       redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
-      redirectHandler.set(Roles.TOUR_GUIDE, () => router.push(pageUrls.LocalFriend.Home));
+      redirectHandler.set(Roles.TOUR_GUIDE, () => router.push(pageUrls.Articles.Home));
       redirectHandler.set(Roles.CUSTOMER, () => router.push(pageUrls.Homepage));
       redirectHandler.set(Roles.VENDOR, () => router.push(pageUrls.Vendor.Home));
       redirectHandler.get(role)?.();
@@ -185,7 +185,7 @@ const LoginLocalFriend = (props: LoginLocalFriendProps) => {
         helpersFormik.setSubmitting(true);
         const requestPayload = LoginModel.parseBodyToRequest(values);
         await auth?.signInRoleTourGuide(requestPayload);
-        router.push(pageUrls.LocalFriend.Home);
+        router.push(pageUrls.Articles.Home);
       } catch (error) {
         showError(error);
       } finally {
@@ -202,7 +202,7 @@ const LoginLocalFriend = (props: LoginLocalFriendProps) => {
           provider: ProviderSocial.GOOGLE,
         };
         await auth?.signInGoogle(body);
-        router.push(pageUrls.LocalFriend.Home);
+        router.push(pageUrls.Articles.Home);
       } catch (error) {
         showError(error);
       }
@@ -217,7 +217,7 @@ const LoginLocalFriend = (props: LoginLocalFriendProps) => {
           provider: ProviderSocial.FACEBOOK,
         };
         await auth?.signInFacebook(body);
-        router.push(pageUrls.LocalFriend.Home);
+        router.push(pageUrls.Articles.Home);
       } catch (error) {
         showError(error);
       }

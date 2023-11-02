@@ -5,7 +5,7 @@ import { showError } from 'helpers/toast';
 
 import { BookingTourList, ResponseGetListBookingTour } from '../bookingTour.interface';
 import BookingTourServices from '../bookingTour.services';
-import { FormFilterTourBookingByTourGuide } from 'app/[locale]/admin/tour-guide/Dialog/component/Orders';
+import { FormFilterTourBookingByTourGuide } from 'app/[locale]/admin/articles/Dialog/component/Orders';
 
 /**
  * SNIPPET GENERATED

@@ -26,7 +26,7 @@ const SelectProvinceDetail = ({ name, nameClearAfterChange, isDisabled, sxContai
       size='small'
       component={CustomFields.SelectField}
       name={name}
-      placeholder={t('LocalFriend.provinceCity')}
+      placeholder={t('Articles.provinceCity')}
       options={optionProvinces}
       fullWidth
       disabled={isDisabled}

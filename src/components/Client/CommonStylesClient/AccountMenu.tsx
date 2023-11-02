@@ -142,7 +142,7 @@ function AccountMenu(props: AccountMenu) {
       href:
         auth.user?.userType === Roles.CUSTOMER
           ? pageUrls.Customer.Profile
-          : pageUrls.LocalFriend.Profile,
+          : pageUrls.Articles.Profile,
       icon: <CommonIconsClient.IconProfileUser />,
     },
   ];

@@ -31,7 +31,7 @@ export default function Login() {
     if (isLogged && !!role) {
       const redirectHandler = new Map<Roles, () => void>();
       redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
-      redirectHandler.set(Roles.TOUR_GUIDE, () => router.push(pageUrls.LocalFriend.Home));
+      redirectHandler.set(Roles.TOUR_GUIDE, () => router.push(pageUrls.Articles.Home));
       redirectHandler.set(Roles.CUSTOMER, () => router.push(pageUrls.Homepage));
       redirectHandler.set(Roles.VENDOR, () => router.push(pageUrls.Vendor.Home));
 

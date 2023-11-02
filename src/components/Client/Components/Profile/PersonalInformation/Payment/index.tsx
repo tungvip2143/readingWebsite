@@ -47,13 +47,13 @@ const Payment = () => {
         <Grid item xs={4} md={4}>
           <CommonStyles.Box>
             <CommonStyles.Typography variant='subtitle2' sx={styles.labelInput}>
-              {t('LocalFriend.bankName')}
+              {t('Articles.bankName')}
             </CommonStyles.Typography>
             <FastField
               size='small'
               component={CustomFields.TextField}
               name='bankName'
-              placeholder={t('LocalFriend.bankName')}
+              placeholder={t('Articles.bankName')}
               fullWidth
               //   disabled={isDisabled}
             />
@@ -62,13 +62,13 @@ const Payment = () => {
         <Grid item xs={4} md={4}>
           <CommonStyles.Box>
             <CommonStyles.Typography variant='subtitle2' sx={styles.labelInput}>
-              {t('LocalFriend.accountNumber')}
+              {t('Articles.accountNumber')}
             </CommonStyles.Typography>
             <FastField
               size='small'
               component={CustomFields.TextField}
               name='accountNumber'
-              placeholder={t('LocalFriend.accountNumber')}
+              placeholder={t('Articles.accountNumber')}
               fullWidth
               iconEndInput={<CommonIcons.CreditCard />}
               //   disabled={isDisabled}
@@ -78,13 +78,13 @@ const Payment = () => {
         <Grid item xs={4} md={4}>
           <CommonStyles.Box>
             <CommonStyles.Typography variant='subtitle2' sx={styles.labelInput}>
-              {t('LocalFriend.beneficiaryName')}
+              {t('Articles.beneficiaryName')}
             </CommonStyles.Typography>
             <FastField
               size='small'
               component={CustomFields.TextField}
               name='beneficiaryName'
-              placeholder={t('LocalFriend.beneficiaryName')}
+              placeholder={t('Articles.beneficiaryName')}
               fullWidth
               iconEndInput={<CommonIcons.Money />}
               //   disabled={isDisabled}

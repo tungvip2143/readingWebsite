@@ -9,7 +9,7 @@ const NoteReasonDisapproval = () => {
   return (
     <CommonStyles.Box sx={{ mt: 2, width: '50rem' }}>
       <CommonStyles.Typography variant='h6'>
-        {t('LocalFriend.reasonDisapproval')}
+        {t('Articles.reasonDisapproval')}
       </CommonStyles.Typography>
       <CommonStyles.Box sx={{ my: 2, width: '100%' }}>
         <FormikField component={CustomFields.Textarea} name='note' disabled />

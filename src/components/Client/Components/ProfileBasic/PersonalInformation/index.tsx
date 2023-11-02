@@ -67,18 +67,18 @@ const PersonalInformation = (props: PersonalInformationProps) => {
       .required(t('Validation.empty', { name: t('Profile.phone') }))
       .matches(/^[0-9]{10,12}$/, t('Validation.validPhone')),
 
-    phoneCode: Yup.string().required(t('Validation.empty', { name: t('LocalFriend.phonePrefix') })),
+    phoneCode: Yup.string().required(t('Validation.empty', { name: t('Articles.phonePrefix') })),
 
     provinceCity: Yup.array().min(1, t('Validation.empty', { name: t('Profile.tourDestination') })),
-    avatar: Yup.string().required(t('Validation.empty', { name: t('LocalFriend.avatar') })),
+    avatar: Yup.string().required(t('Validation.empty', { name: t('Articles.avatar') })),
     email: Yup.string()
       .required(t('Validation.empty', { name: t('Profile.email') }))
       .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, t('Validation.emailFormat')),
     residenceAccordingToPermanentAddress: Yup.string().required(
-      t('Validation.empty', { name: t('LocalFriend.residenceAccordingToPermanentAddress') })
+      t('Validation.empty', { name: t('Articles.residenceAccordingToPermanentAddress') })
     ),
     currentResidence: Yup.string().required(
-      t('Validation.empty', { name: t('LocalFriend.currentResidence') })
+      t('Validation.empty', { name: t('Articles.currentResidence') })
     ),
   });
 

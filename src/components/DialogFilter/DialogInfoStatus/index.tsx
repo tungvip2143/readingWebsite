@@ -43,7 +43,7 @@ const DialogInfoStatus = (props: DialogFilterProps) => {
                   <CommonStyles.Box sx={{ width: '100%' }}>
                     <FastField
                       name='status'
-                      label={t('Common.filter', { key: t('LocalFriend.infoStatus') })}
+                      label={t('Common.filter', { key: t('Articles.infoStatus') })}
                       component={CustomFields.SelectField}
                       options={optionsInfoStatusTourGuide}
                       fullWidth

@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material';
-import { FormTourGuideValues } from 'app/[locale]/admin/tour-guide/Dialog/AddForm';
+import { FormTourGuideValues } from 'app/[locale]/admin/articles/Dialog/AddForm';
 import FieldUploadArray from 'components/Client/Components/FieldUploadArray';
 import CommonStyles from 'components/CommonStyles';
 import { TypeFile } from 'constants/common';
@@ -10,7 +10,7 @@ import { isEmpty } from 'lodash';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import CommonIconsClient from 'components/Client/CommonIcons';
-import DialogPreviewPdf from 'app/[locale]/admin/tour-guide/Dialog/component/DialogPreviewPdf';
+import DialogPreviewPdf from 'app/[locale]/admin/articles/Dialog/component/DialogPreviewPdf';
 
 const UploadCID = () => {
   //!State
@@ -61,7 +61,7 @@ const UploadCID = () => {
             marginBottom: '0.5rem',
           }}
         >
-          {t('LocalFriend.citizenIdCardImage')}
+          {t('Articles.citizenIdCardImage')}
         </CommonStyles.Typography>
         <CommonStyles.Typography
           variant='h4'

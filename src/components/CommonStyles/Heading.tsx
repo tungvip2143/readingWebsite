@@ -20,9 +20,9 @@ const Heading = (props: HeadingProps) => {
   //! Render
   return (
     <CommonStyles.Box sx={{ mt: 2 }}>
-      <CommonStyles.BreadcrumbsMui
+      {/* <CommonStyles.BreadcrumbsMui
         style={{ mb: 3, fontSize: '14px', lineHeight: '22px', color: theme.colors?.bgneutral500 }}
-      />
+      /> */}
       <CommonStyles.Box
         sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}
       >
