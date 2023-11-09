@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Order } from 'interfaces/common';
 import CommonStyles from 'components/CommonStyles';
 import useFiltersHandler from 'hooks/useFiltersHandler';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { Article } from 'modules/article/article.interface';
 import SearchAndFilters from 'components/SearchAndFilters';
 import { FastField } from 'formik';
 import CustomFields from 'components/CustomFields';
@@ -13,25 +13,21 @@ import CommonIcons from 'components/CommonIcons';
 import CellActions from './CellActions/CellActions';
 import useToggleDialog from 'hooks/useToggleDialog';
 import DialogViewDetails from './Dialog/DialogViewDetails';
-import useGetListTourGuide from 'modules/tourGuide/hooks/useGetListTourGuide';
+import useGetListArticle from 'modules/article/hooks/useGetListArticle';
 import cachedKeys from 'constants/cachedKeys';
-import { Gender, TourGuideInfoStatus } from 'constants/common';
 import { convertActiveOrDeactive } from 'helpers/common';
-import DialogActiveOrInactive from 'components/DialogFilter/DialogActiveOrInactive';
 import { HeadCell } from 'components/CommonStyles/Table';
-import DialogInfoStatus from 'components/DialogFilter/DialogInfoStatus';
 import { IMG_URL } from 'constants/apiUrls';
+import moment from 'moment';
+import { DEFAULT_FORMAT_DATE } from 'constants/common';
 
-interface TourGuideProps {}
+interface ArticleProps {}
 export interface IInitialValues {
   page: number;
   perPage: number;
   sortField: string;
   sortOrder: Order;
   textSearch?: string;
-  status?: TourGuideInfoStatus;
-  isActive?: number;
-  tourId?: number;
 }
 const initialFilters: IInitialValues = {
   page: 1,
@@ -39,11 +35,40 @@ const initialFilters: IInitialValues = {
   sortField: 'createdAt',
   sortOrder: Order.desc,
   textSearch: '',
-  status: undefined,
-  isActive: undefined,
-  tourId: undefined,
 };
-const TourGuide = (props: TourGuideProps) => {
+const dataMock: Article[] = [
+  {
+    id: 1,
+    titleArticle: 'Empowering Sisterhood: The Feminine Force Behind ‘The Marvels’',
+    subtitleArticle: 'aa',
+    topicArticle: 'Events',
+    articleBackground:
+      'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+    contentArticle: 'aa',
+    createdAt: '2021-12-10T03:00:00.000Z',
+  },
+  {
+    id: 2,
+    titleArticle: 'Storytelling With Impact: Plan A Production’s Cultural And Commercial Success',
+    subtitleArticle: 'aa',
+    topicArticle: '3F',
+    articleBackground:
+      'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+    contentArticle: 'aa',
+    createdAt: '2021-11-10T03:00:00.000Z',
+  },
+  {
+    id: 3,
+    titleArticle: 'Empowering Global Minds: How Finest Future Reshapes International Education',
+    subtitleArticle: 'aa',
+    topicArticle: 'Charity',
+    articleBackground:
+      'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+    contentArticle: 'aa',
+    createdAt: '2021-10-10T03:00:00.000Z',
+  },
+];
+const Article = (props: ArticleProps) => {
   //! State
   const {
     filters,
@@ -59,11 +84,11 @@ const TourGuide = (props: TourGuideProps) => {
   } = useFiltersHandler(initialFilters);
 
   const {
-    data: dataTourGuide,
+    data: dataArticle,
     isLoading,
     isRefetching,
     isFetchingPage,
-  } = useGetListTourGuide(filters, { refetchKey: cachedKeys.refetchListTourGuide });
+  } = useGetListArticle(filters, { refetchKey: cachedKeys.refetchListArticle });
 
   const theme = useTheme();
   const t = useTranslations();
@@ -73,28 +98,29 @@ const TourGuide = (props: TourGuideProps) => {
     toggle: toggleCreate,
   } = useToggleDialog();
 
-  const listIsNotSortBy = ['TourGuideArea'];
+  const listIsNotSortBy = ['ArticleArea'];
 
   //! Function
-  const totalCount = dataTourGuide?.totalItems || 0;
+  const totalCount = dataArticle?.totalItems || 0;
   const handleCreate = () => {
     toggleCreate();
   };
 
-  const headCell: HeadCell<TourGuide>[] = [
+  const headCell: HeadCell<Article>[] = [
     {
-      label: t('Articles.STT'),
-      id: 'avatar',
-      Cell: (row: TourGuide) => {
-        const avatar = `${IMG_URL}/${row?.avatar}` || '';
+      label: t('Articles.avatar'),
+      id: 'articleBackground',
+      Cell: (row: Article) => {
+        // const avatar = `${IMG_URL}/${row?.articleBackground}` || '';
+        const avatar = row?.articleBackground || '';
         return <CommonStyles.Avatar sx={{ fontWeight: '700' }} src={avatar} />;
       },
     },
     {
       label: t('Articles.name'),
-      id: 'email',
-      Cell: (row: TourGuide) => {
-        const email = row?.email || '';
+      id: 'titleArticle',
+      Cell: (row: Article) => {
+        const email = row?.titleArticle || '';
         return (
           <CommonStyles.Typography sx={{ fontWeight: '700' }}>{email}</CommonStyles.Typography>
         );
@@ -102,28 +128,20 @@ const TourGuide = (props: TourGuideProps) => {
     },
     {
       label: t('Articles.createdAt'),
-      id: 'firstName',
-      Cell: (row: TourGuide) => {
-        const fullName = row?.firstName + row?.lastName || '';
+      id: 'createAt',
+      Cell: (row: Article) => {
+        const createAt = moment(row?.createdAt).format(DEFAULT_FORMAT_DATE) || '';
         return (
-          <CommonStyles.Typography sx={{ fontWeight: '700' }}>{fullName}</CommonStyles.Typography>
+          <CommonStyles.Typography sx={{ fontWeight: '700' }}>{createAt}</CommonStyles.Typography>
         );
       },
     },
     {
-      label: t('Articles.source'),
-      id: 'isActive',
-      Cell: (row: TourGuide) => {
-        const status = convertActiveOrDeactive(row?.isActive);
-        return <CommonStyles.Badge label={status} category='blue' />;
-      },
-    },
-    {
       label: t('Articles.topic'),
-      id: 'status',
-      Cell: (row: TourGuide) => {
-        const status = row?.status || '';
-        return <CommonStyles.Badge label={status} category='purpleRoundOff' />;
+      id: 'topicArticle',
+      Cell: (row: Article) => {
+        const topic = row?.topicArticle || '';
+        return <CommonStyles.Badge label={topic} category='purpleRoundOff' />;
       },
       // renderFilters: ({ open, toggle }) => {
       //   return (
@@ -142,8 +160,8 @@ const TourGuide = (props: TourGuideProps) => {
     {
       label: t('Articles.action'),
       id: 'actions',
-      Cell: (row: TourGuide) => {
-        return <CellActions tourGuide={row} />;
+      Cell: (row: Article) => {
+        return <CellActions article={row} />;
       },
     },
   ];
@@ -205,13 +223,13 @@ const TourGuide = (props: TourGuideProps) => {
         page={filters.page}
         headCells={headCell}
         totalCount={totalCount}
-        rows={dataTourGuide?.items || []}
+        rows={dataMock || []}
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={changeRowPerPage}
         rowsPerPage={filters.perPage}
         handleRequestSort={handleRequestSort}
-        handleSelectAllClick={handleSelectAll}
-        handleCheckBox={handleCheckBox}
+        // handleSelectAllClick={handleSelectAll}
+        // handleCheckBox={handleCheckBox}
         sortByIsActived={listIsNotSortBy}
       />
       {shouldRenderCreate && (
@@ -221,4 +239,4 @@ const TourGuide = (props: TourGuideProps) => {
   );
 };
 
-export default React.memo(TourGuide);
+export default React.memo(Article);

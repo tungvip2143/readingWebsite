@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { Order, PaginationFilters, ResponseCommon, ResponseList } from 'interfaces/common';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import { Vendor } from 'modules/vendor/vendor.interface';
 
 export interface WishListVendor {

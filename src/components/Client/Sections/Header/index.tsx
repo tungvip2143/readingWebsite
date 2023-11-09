@@ -16,140 +16,31 @@ import router from 'routes/router';
 import OptionsLang from 'components/OptionsLang';
 import { removeLangFromPathname } from 'helpers/common';
 import useAuth from 'hooks/useAuth';
+import SearchAndFilters from 'components/SearchAndFilters';
+import useFiltersHandler from 'hooks/useFiltersHandler';
+import FormikField from 'components/FormikField';
+import CustomFields from 'components/CustomFields';
+import { initial } from 'lodash';
 
+export interface SearchAndFiltersProps {
+  textSearch?: string;
+}
 const Header = () => {
-  const t = useTranslations('Routes');
-  const tIndex = useTranslations('Index');
+  //! State
+  const t = useTranslations();
   const theme = useTheme();
   const pathName = usePathname();
   const route = useRouter();
   const auth = useAuth();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const initialSearch: SearchAndFiltersProps = {
+    textSearch: '',
+  };
+  //! Function
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
-  const handleNavigateHomepage = () => {
-    route.push(pageUrls.Homepage);
-  };
-  const renderRouter = (drawer?: boolean) => {
-    return (
-      <CommonStylesClient.Box
-        sx={{
-          display: { xs: drawer ? 'flex' : 'none', lg: 'flex' },
-          maxWidth: '370px',
-          flexDirection: drawer ? 'column' : undefined,
-          justifyContent: 'space-between',
-          width: '100%',
-        }}
-      >
-        {router()
-          .routerUser?.filter((itemFilter: RouterBase) => itemFilter.showTab === true)
-          .map((item: RouterBase, index: number) => {
-            const label = item.label;
-            const path = item.path;
-            const isActive = removeLangFromPathname(pathName) === path;
-            return (
-              <Link
-                key={index}
-                href={path}
-                style={{ textDecoration: 'none', color: theme.colors?.black }}
-              >
-                <CommonStylesClient.Typography
-                  type='title16'
-                  sx={{
-                    color: !!isActive ? theme.colors?.primary500 : theme.colors?.bgneutral500,
-                    fontWeight: !!isActive ? 'bold' : 300,
-                  }}
-                >
-                  {label}
-                </CommonStylesClient.Typography>
-              </Link>
-            );
-          })}
-      </CommonStylesClient.Box>
-    );
-  };
-
-  const renderIconAndRoute = () => {
-    const renderLogo = () => {
-      return (
-        <CommonStylesClient.Box
-          onClick={handleNavigateHomepage}
-          sx={{ width: { lg: '20rem', xs: '15rem', cursor: 'pointer' } }}
-        >
-          <img src={LOGO_IMAGE_PATH.src} alt='logo' style={{ width: '75px', height: '75px' }} />
-        </CommonStylesClient.Box>
-      );
-    };
-
-    return (
-      <CommonStylesClient.Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          width: '100%',
-          justifyContent: 'space-between',
-        }}
-      >
-        {renderLogo()}
-        {renderRouter()}
-
-        <CommonStylesClient.Box sx={{ height: '3rem', display: 'flex', alignItems: 'center' }}>
-          <CommonStylesClient.Divider
-            orientation='vertical'
-            variant='middle'
-            flexItem
-            sx={{
-              display: { xs: 'none', lg: 'block' },
-            }}
-          />
-          <OptionsLang />
-        </CommonStylesClient.Box>
-      </CommonStylesClient.Box>
-    );
-  };
-
-  const renderSwitchLangAndBtnLogin = () => {
-    return (
-      <CommonStylesClient.Box
-        sx={{
-          display: { xs: 'none', lg: 'flex' },
-          alignItems: 'center',
-          maxWidth: 'fit-content',
-          width: '100%',
-        }}
-      >
-        <CommonStylesClient.AccountMenu />
-      </CommonStylesClient.Box>
-    );
-  };
-
-  const renderMenuIcon = () => {
-    return (
-      <CommonStylesClient.Button
-        isIconButton
-        aria-label='open drawer'
-        edge='end'
-        sx={{
-          color: theme.colors?.black,
-          cursor: 'pointer',
-          display: { lg: 'none' },
-          p: 0,
-          [theme.breakpoints.down('sm')]: {
-            mr: 2,
-            p: 0,
-          },
-        }}
-        onClick={handleDrawerToggle}
-      >
-        <CommonIcons.MenuIcon />
-      </CommonStylesClient.Button>
-    );
-  };
-
   const renderDrawer = () => {
     return (
       <CommonStylesClient.Box
@@ -163,50 +54,92 @@ const Header = () => {
           textAlign: 'center',
         }}
         onClick={handleDrawerToggle}
-      >
-        {renderRouter(true)}
-      </CommonStylesClient.Box>
+      ></CommonStylesClient.Box>
     );
   };
 
-  return (
-    <CommonStylesClient.Box>
-      <AppBar
-        component='nav'
+  const ButtonSearch = ({ textSearch }: SearchAndFiltersProps) => {
+    const isHaveTextSearch = !!textSearch;
+    return (
+      <CommonStylesClient.Button
         sx={{
-          height: MAX_HEIGHT_NAVBAR,
-          [theme.breakpoints.down('sm')]: {
-            height: '4rem',
+          backgroundColor: isHaveTextSearch ? ' rgb(255 255 255)' : `${theme?.colors?.bggray200}`,
+          boxShadow: isHaveTextSearch ? '0px 0px 5px 1px rgba(0,0,0,0.1)' : 'none',
+          borderRadius: '2rem',
+          padding: '0.375rem 0.75rem',
+          height: '2rem',
+          '&:hover': {
+            backgroundColor: isHaveTextSearch ? ' rgb(255 255 255)' : `${theme?.colors?.bggray200}`,
+            boxShadow: isHaveTextSearch ? '0px 0px 5px 1px rgba(0,0,0,0.1)' : 'none',
           },
-          background: theme.colors?.white,
-          boxShadow: `rgba(50, 50, 105, 0.12) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px`,
         }}
+        type='submit'
+        disabled={!isHaveTextSearch}
       >
-        <CommonStylesClient.Toolbar
-          className='container'
+        <CommonStylesClient.Typography
+          type='title10'
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '100%',
-            maxWidth: MAX_WIDTH_CONTAINER,
-            margin: 'auto',
-            padding: '1.5rem 0',
-            [theme.breakpoints.down('sm')]: {
-              padding: '1rem 0',
-            },
-            [theme.breakpoints.up('sm')]: {
-              padding: 0,
-            },
+            color: isHaveTextSearch ? `${theme?.colors?.bgblack}` : `${theme?.colors?.bggray400}`,
           }}
         >
-          {renderIconAndRoute()}
-          {renderSwitchLangAndBtnLogin()}
-          {renderMenuIcon()}
-        </CommonStylesClient.Toolbar>
-      </AppBar>
+          {t('Common.search')}
+        </CommonStylesClient.Typography>
+      </CommonStylesClient.Button>
+    );
+  };
+  //! Render
+  return (
+    <CommonStylesClient.Box>
       <CommonStylesClient.Box component='nav'>
+        <CommonStylesClient.Box
+          sx={{ display: 'flex', justifyContent: 'space-between', margin: '1rem' }}
+        >
+          <CommonStylesClient.Typography type='pcHeading3'>
+            Mediwey magazine
+          </CommonStylesClient.Typography>
+          <CommonStylesClient.Box sx={{}}>
+            <SearchAndFilters
+              hideResetButton
+              hideDefaultSubmit
+              styleWrapperForm={{ flex: 1 }}
+              initialValues={initialSearch}
+              onSubmit={(values) => {
+                console.log(values);
+              }}
+              sxContainer={{ display: 'flex', justifyContent: 'space-between' }}
+              renderFilterFields={(props) => {
+                const values: SearchAndFiltersProps = props?.values;
+                return (
+                  <CommonStylesClient.Box sx={{ gap: 2, display: 'flex', flex: 1 }}>
+                    <FormikField
+                      component={CustomFields.TextField}
+                      name='textSearch'
+                      placeholder={t('Common.search')}
+                      iconStartInput={<CommonIcons.Search />}
+                      iconEndInput={<ButtonSearch textSearch={values?.textSearch} />}
+                      sx={{
+                        width: '25rem ',
+                        backgroundColor: 'rgb(242 243 245)',
+                        borderRadius: '1rem',
+                        '& div': {
+                          borderRadius: '1rem',
+                          '&.Mui-focused fieldset ': {
+                            borderColor: 'rgb(41 41 41) !important',
+                            boderWidth: '2px !important',
+                          },
+                        },
+                      }}
+                      sxEndAdornment={{ transform: 'translateX(0.5rem)' }}
+                      size='small'
+                    />
+                  </CommonStylesClient.Box>
+                );
+              }}
+            />
+          </CommonStylesClient.Box>
+        </CommonStylesClient.Box>
         <Drawer
-          anchor='right'
+          anchor='left'
           variant='temporary'
           open={mobileOpen}
           onClose={handleDrawerToggle}

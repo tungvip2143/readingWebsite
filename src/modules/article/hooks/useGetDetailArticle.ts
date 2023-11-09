@@ -1,24 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
-import { ResponseGetProfile } from '../profileLocalFriend.interface';
-import profileService from '../profileLocalFriend.services';
-import { TourGuide } from 'modules/tourGuide/article.interface';
+import { Article, ResponseGetDetailArticle } from '../article.interface';
+import ArticleServices from '../article.services';
 
-const useGetProfile = (
-  options: { isTrigger?: boolean; refetchKey?: string } = { isTrigger: true, refetchKey: '' }
-) => {
-  const { isTrigger = true, refetchKey = '' } = options;
-
-  const [data, setData] = useState<TourGuide>();
+const useGetDetailArticle = (id: number | string, isTrigger: boolean = false) => {
+  const [data, setData] = useState<Article>();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>('');
 
   const callApi = useCallback(() => {
-    return profileService.getProfile();
+    return ArticleServices.getDetailArticle(id);
   }, []);
-
-  const transformResponse = useCallback((response: ResponseGetProfile) => {
+  const transformResponse = useCallback((response: ResponseGetDetailArticle) => {
     if (response) {
-      setData(response.data.data);
+      setData(response?.data?.data);
     }
   }, []);
 
@@ -29,7 +23,7 @@ const useGetProfile = (
     } catch (error) {
       setError(error);
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     let shouldSetData = true;
@@ -63,4 +57,4 @@ const useGetProfile = (
   };
 };
 
-export default useGetProfile;
+export default useGetDetailArticle;

@@ -6,28 +6,28 @@ import { useTranslations } from 'next-intl';
 import CommonIcons from 'components/CommonIcons';
 import { useTheme } from '@mui/material';
 import DialogViewDetails from '../Dialog/DialogViewDetails';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
-import tourGuideServices from 'modules/tourGuide/tourGuide.services';
+import { Article } from 'modules/article/article.interface';
+import articleServices from 'modules/article/article.services';
 import cachedKeys from 'constants/cachedKeys';
 import { useGet } from 'stores/useStore';
 import { showError, showSuccess } from 'helpers/toast';
 
 interface ICellActions {
-  tourGuide: TourGuide;
+  article: Article;
 }
 
 const CellActions = (props: ICellActions) => {
   //! State
   const t = useTranslations();
   const theme = useTheme();
-  const { tourGuide } = props;
+  const { article } = props;
   const { shouldRender: shouldRenderEdit, open: openEdit, toggle: toggleEdit } = useToggleDialog();
   const {
     shouldRender: shouldRenderDelete,
     open: openDelete,
     toggle: toggleDelete,
   } = useToggleDialog();
-  const refetchListTourGuide = useGet(cachedKeys.refetchListTourGuide);
+  const refetchListArticle = useGet(cachedKeys.refetchListArticle);
   //! Function
   const handleEdit = () => {
     toggleEdit();
@@ -35,10 +35,10 @@ const CellActions = (props: ICellActions) => {
 
   const handleDelete = async () => {
     try {
-      const response = await tourGuideServices.deleteTourGuide({ id: tourGuide?.id });
+      const response = await articleServices.deleteArticle({ id: article?.id });
       if (response.status === 200 || response.status === 201) {
         showSuccess(t('Common.success'));
-        refetchListTourGuide();
+        refetchListArticle();
       }
     } catch (error) {
       showError(error);
@@ -49,7 +49,7 @@ const CellActions = (props: ICellActions) => {
   return (
     <>
       {shouldRenderEdit && (
-        <DialogViewDetails isOpen={openEdit} toggle={toggleEdit} id={tourGuide?.id} />
+        <DialogViewDetails isOpen={openEdit} toggle={toggleEdit} id={article?.id} />
       )}
       {shouldRenderDelete && (
         <DialogConfirm

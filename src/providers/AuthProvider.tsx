@@ -33,7 +33,7 @@ import {
 import loginPhoneServices from 'modules/loginPhone/loginPhone.services';
 import { RequestSignUp, ResponseSignUp } from 'modules/signUp/signUp.interface';
 import signUpServices from 'modules/signUp/signUp.services';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import { Vendor } from 'modules/vendor/vendor.interface';
 import {
   RequestVerifyRegisterCustomer,

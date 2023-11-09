@@ -11,7 +11,7 @@ import {
 import { Language, TourStatus } from 'constants/common';
 import { TourCategory } from 'modules/tour-category/tour-category.interface';
 import { Customer } from 'modules/customers/customer.interface';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 
 export interface Attributes {
   id: number;

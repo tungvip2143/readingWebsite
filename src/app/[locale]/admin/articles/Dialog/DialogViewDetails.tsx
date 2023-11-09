@@ -26,18 +26,18 @@ const DialogViewDetails = (props: IProps) => {
     //   return modalAction.EDIT;
     // }
 
-    return modalAction.DETAILS;
+    return modalAction.DETAIL;
   }, [isCreate, isDetail]);
 
   //! Render
   return (
     <CommonStyles.Dialog
-      title={t(`ActionModal.${tourGuideAction()}`)}
-      content={<AddForm idTourGuide={id} actionStatus={tourGuideAction()} toggleAddform={toggle} />}
+      title={t(`ActionModal.${tourGuideAction()}`).toUpperCase()}
+      content={<AddForm idArticle={id} actionStatus={tourGuideAction()} toggleAddform={toggle} />}
       open={isOpen}
       toggle={toggle}
       disableClickOutside={false}
-      maxWidth={'xl'}
+      maxWidth={'lg'}
     />
   );
 };

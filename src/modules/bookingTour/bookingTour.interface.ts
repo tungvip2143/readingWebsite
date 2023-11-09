@@ -1,4 +1,4 @@
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import { AxiosResponse } from 'axios';
 import { FilterStatusTourBooking, Gender, TransactionProcess } from 'constants/common';
 import {

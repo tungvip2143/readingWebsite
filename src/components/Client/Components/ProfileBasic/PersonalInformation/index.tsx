@@ -9,7 +9,7 @@ import useGetProfile from 'modules/profileLocalFriend/hooks/useGetProfileLocalFr
 import { showError, showSuccess } from 'helpers/toast';
 import cachedKeys from 'constants/cachedKeys';
 import CommonStyles from 'components/CommonStyles';
-import { MediaItem, TourGuideDocRequest } from 'modules/tourGuide/tourGuide.interface';
+import { MediaItem, TourGuideDocRequest } from 'modules/tourGuide/article.interface';
 import useAuth from 'hooks/useAuth';
 import ProfileBasicdModel from 'models/profileBasic.model';
 

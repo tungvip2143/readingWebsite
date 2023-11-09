@@ -1,7 +1,7 @@
 import { FormVerifyProfileBasic } from 'components/Client/Components/ProfileBasic/PersonalInformation';
 import { IMG_URL } from 'constants/apiUrls';
 import { DEFAULT_PREFIX_PHONE, Gender, YesOrNoValue } from 'constants/common';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import moment from 'moment';
 
 class ProfileBasicdModel {

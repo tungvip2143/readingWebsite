@@ -21,8 +21,8 @@ import withPrivate from 'HOCs/withPrivate';
 import withAuthorization from 'HOCs/withAuthorization';
 
 function DefaultLayoutAdmin({ children }: { children: React.ReactNode }) {
-  const t = useTranslations('Routes');
-  const tIndex = useTranslations('Index');
+  const t = useTranslations();
+
   const theme = useTheme();
   const pathName = usePathname();
   const route = useRouter();
@@ -167,7 +167,7 @@ function DefaultLayoutAdmin({ children }: { children: React.ReactNode }) {
             ) : (
               <Link href={pageUrls.Login}>
                 <CommonStyles.Button sx={{ width: 120, background: theme.colors?.primary500 }}>
-                  {tIndex('login')}
+                  {t('Common.search')}
                 </CommonStyles.Button>
               </Link>
             )}

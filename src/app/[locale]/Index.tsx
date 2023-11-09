@@ -4,14 +4,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 import DefaultLayoutUser from 'components/DefaultLayoutUser';
 import CommonStyles from 'components/CommonStyles';
-import FindTourSection from 'components/Client/Sections/FindTourSection';
-import Marketing from 'components/Client/Sections/Marketing';
-import PlacesToGoSession from 'components/Client/Sections/PlacesToGoSection';
-import WhyChooseUseSession from 'components/Client/Sections/WhyChooseUsSection';
-import ExploreOurTours from 'components/Client/Sections/ExploreOurTours';
-import AllTheBestPlaces from 'components/Client/Sections/AllTheBestPlaces';
 import Footer from 'components/Client/Sections/Footer';
-import ExploreJourneySection from 'components/Client/Sections/ExploreJourneySection';
 
 type Props = {};
 
@@ -26,13 +19,7 @@ export default function Index(props: Props) {
             // justifyContent: 'center',
           }}
         >
-          <FindTourSection />
-          <ExploreJourneySection />
-          <ExploreOurTours />
-          <PlacesToGoSession />
-          <AllTheBestPlaces />
-          <WhyChooseUseSession />
-          <Marketing />
+          aaaa
         </CommonStyles.Box>
         <Footer />
       </DefaultLayoutUser>

@@ -56,7 +56,7 @@ function SearchAndFilters<T extends FormikValues = FormikValues>({
                     startIcon={<CommonIcons.Search />}
                     sx={{ background: theme.colors?.primary500, ...sxBtnSearch }}
                   >
-                    {t('Index.search')}
+                    {t('Common.search')}
                   </CommonStyles.Button>
 
                   {!hideResetButton && (
@@ -69,7 +69,7 @@ function SearchAndFilters<T extends FormikValues = FormikValues>({
                       }}
                       startIcon={<CommonIcons.Reset />}
                     >
-                      {t('Index.reset')}
+                      {t('Common.reset')}
                     </CommonStyles.Button>
                   )}
                 </CommonStyles.Box>

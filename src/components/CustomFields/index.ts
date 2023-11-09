@@ -9,6 +9,7 @@ import DatePickerField from './DatePickerField';
 import CheckBoxField from './CheckboxField';
 import Textarea from './Textarea';
 import TimePickerField from './TimePickerField';
+import TinyMceCommon from './TinyMceCommon';
 
 export default {
   TextField,
@@ -20,4 +21,5 @@ export default {
   CheckBoxField,
   Textarea,
   TimePickerField,
+  TinyMceCommon,
 };

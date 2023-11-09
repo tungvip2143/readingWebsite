@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { IUser } from 'modules/login/login.interface';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import { Vendor } from 'modules/vendor/vendor.interface';
 import { Method } from 'constants/common';
 // export interface IUser {

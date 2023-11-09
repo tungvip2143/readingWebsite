@@ -16,7 +16,7 @@ import { StatusTourGuideApplyBooking, TourGuideApplyStatus } from 'interfaces/co
 import DialogConfirm from 'components/DialogConfirm';
 import useToggleDialog from 'hooks/useToggleDialog';
 import useAuth from 'hooks/useAuth';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import { TourGuideInfoStatus } from 'constants/common';
 import useGetProfile from 'modules/profileLocalFriend/hooks/useGetProfileLocalFriend';
 

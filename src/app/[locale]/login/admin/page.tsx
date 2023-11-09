@@ -11,7 +11,7 @@ import CustomFields from 'components/CustomFields';
 import CommonStyles from 'components/CommonStyles';
 import CommonIcons from 'components/CommonIcons';
 import useAuth from 'hooks/useAuth';
-import { Roles } from 'constants/common';
+import { LOGO_IMAGE_PATH, Roles } from 'constants/common';
 import { showError } from 'helpers/toast';
 import Loading from 'components/CommonStyles/Loading';
 
@@ -31,7 +31,7 @@ export default function Login() {
     if (isLogged && !!role) {
       const redirectHandler = new Map<Roles, () => void>();
       redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
-      redirectHandler.set(Roles.TOUR_GUIDE, () => router.push(pageUrls.Articles.Home));
+      redirectHandler.set(Roles.TOUR_GUIDE, () => router.push(pageUrls.LocalFriend.Home));
       redirectHandler.set(Roles.CUSTOMER, () => router.push(pageUrls.Homepage));
       redirectHandler.set(Roles.VENDOR, () => router.push(pageUrls.Vendor.Home));
 
@@ -109,16 +109,22 @@ export default function Login() {
                   gap: 20,
                 }}
               >
-                <CommonStyles.Box>
-                  <CommonStyles.Typography
+                <CommonStyles.Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <CommonStyles.Box
                     sx={{
-                      fontSize: '2em',
-                      color: theme.colors?.black,
-                      fontWeight: 'bold',
+                      display: 'flex',
+                      gap: '0.5rem',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                     }}
                   >
-                    {t('Login.hello')}
-                  </CommonStyles.Typography>
+                    <img
+                      src={LOGO_IMAGE_PATH.src}
+                      alt='logo'
+                      style={{ width: '55px', height: '55px' }}
+                    />
+                  </CommonStyles.Box>
+
                   <CommonStyles.Typography
                     sx={{ fontSize: '1.25em', color: theme.colors?.bgneutral500 }}
                   >

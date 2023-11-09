@@ -1,4 +1,4 @@
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import { AxiosResponse } from 'axios';
 import { StatusMyBookingTour, StatusReservationVendor } from 'constants/common';
 import { PaginationFilters, ResponseCommon, ResponseList } from 'interfaces/common';

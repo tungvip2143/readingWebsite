@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import useGetProfile from 'modules/profileLocalFriend/hooks/useGetProfileLocalFriend';
 import useAuth from 'hooks/useAuth';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import { TourGuideInfoStatus } from 'constants/common';
 import cachedKeys from 'constants/cachedKeys';
 

@@ -8,8 +8,8 @@ import { useTheme } from '@mui/material';
 export type ITextFieldProps = CheckboxProps & {
   field?: FieldInputProps<any>;
   form?: FormikProps<any>;
-  checkValue: any;
-  label: string;
+  checkValue?: any;
+  label?: string;
   sxContainer?: SxProps;
   sx?: SxProps;
   sxLabel?: SxProps;

@@ -2,7 +2,7 @@ import { IUser } from 'modules/login/login.interface';
 import { localStorageFunc } from './../helpers/common';
 import axios, { AxiosInstance } from 'axios';
 import { cloneDeep, isArray, isObject, isString } from 'lodash';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 import { Vendor } from 'modules/vendor/vendor.interface';
 
 export const KEY_TOKEN = 'dzb_auth';

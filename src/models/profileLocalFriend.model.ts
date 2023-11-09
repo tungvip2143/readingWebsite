@@ -6,7 +6,7 @@ import { showError } from 'helpers/toast';
 import { Media } from 'interfaces/common';
 import { isString } from 'lodash';
 import { BodyUpdateProfileTourGuide } from 'modules/profileLocalFriend/profileLocalFriend.interface';
-import { TourGuide, TourGuideDocRequest } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide, TourGuideDocRequest } from 'modules/tourGuide/article.interface';
 import uploadImageServices from 'modules/uploadImage/upload-image.services';
 import moment from 'moment';
 

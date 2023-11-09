@@ -3,7 +3,7 @@ import { Gender, UserStatus } from 'constants/common';
 import { PaginationFilters, PhoneCode, ResponseCommon } from 'interfaces/common';
 import { IUser } from 'modules/login/login.interface';
 import { Tour } from 'modules/tour/tour.interface';
-import { TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { TourGuide } from 'modules/tourGuide/article.interface';
 
 export interface TourBookingTransaction {
   id: number;

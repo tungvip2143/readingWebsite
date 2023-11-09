@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { Gender } from 'constants/common';
 import { Gallery, Media, ResponseCommon } from 'interfaces/common';
 import { Province } from 'modules/province/province.interface';
-import { BankAccount, MediaItem, TourGuide } from 'modules/tourGuide/tourGuide.interface';
+import { BankAccount, MediaItem, TourGuide } from 'modules/tourGuide/article.interface';
 
 export interface TourGuideArea {
   area: Province;
