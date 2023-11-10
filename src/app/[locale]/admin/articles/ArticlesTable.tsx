@@ -89,12 +89,12 @@ const Article = (props: ArticleProps) => {
     setFilters,
   } = useFiltersHandler(initialFilters);
 
-  const {
-    data: dataArticle,
-    isLoading,
-    isRefetching,
-    isFetchingPage,
-  } = useGetListArticle(filters, { refetchKey: cachedKeys.refetchListArticle });
+  // const {
+  //   data: dataArticle,
+  //   isLoading,
+  //   isRefetching,
+  //   isFetchingPage,
+  // } = useGetListArticle(filters, { refetchKey: cachedKeys.refetchListArticle });
 
   const theme = useTheme();
   const t = useTranslations();
@@ -107,7 +107,7 @@ const Article = (props: ArticleProps) => {
   const listIsNotSortBy = ['ArticleArea'];
 
   //! Function
-  const totalCount = dataArticle?.totalItems || 0;
+  // const totalCount = dataArticle?.totalItems || 0;
   const handleCreate = () => {
     toggleCreate();
   };
@@ -218,13 +218,15 @@ const Article = (props: ArticleProps) => {
         </CommonStyles.Box>
       </CommonStyles.Heading>
       <CommonStyles.Table
-        isLoading={isLoading || isRefetching || isFetchingPage}
+        // isLoading={isLoading || isRefetching || isFetchingPage}
+        isLoading={false}
         order={filters.sortOrder}
         orderBy={filters.sortField}
         selected={rowsSelected}
         page={filters.page}
         headCells={headCell}
-        totalCount={totalCount}
+        // totalCount={totalCount}
+        totalCount={5}
         rows={dataMock || []}
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={changeRowPerPage}

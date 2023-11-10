@@ -30,12 +30,9 @@ export default function Login() {
     // Check to redirect to the page with corresponding role
     if (isLogged && !!role) {
       const redirectHandler = new Map<Roles, () => void>();
-      redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
-      redirectHandler.set(Roles.TOUR_GUIDE, () => router.push(pageUrls.LocalFriend.Home));
-      redirectHandler.set(Roles.CUSTOMER, () => router.push(pageUrls.Homepage));
-      redirectHandler.set(Roles.VENDOR, () => router.push(pageUrls.Vendor.Home));
+      // redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
 
-      redirectHandler.get(role)?.();
+      // redirectHandler.get(role)?.();
     }
   }, [isLogged, role]);
 
@@ -84,20 +81,21 @@ export default function Login() {
             password: Yup.string().required(t('Validation.empty', { name: t(`Login.password`) })),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            (async () => {
-              try {
-                setSubmitting(true);
-                if (error) setError(undefined);
-                auth?.signIn({
-                  username: values.username,
-                  password: values.password,
-                });
-              } catch (error) {
-                showError(error);
-              } finally {
-                setSubmitting(false);
-              }
-            })();
+            // (async () => {
+            //   try {
+            //     setSubmitting(true);
+            //     if (error) setError(undefined);
+            //     auth?.signIn({
+            //       username: values.username,
+            //       password: values.password,
+            //     });
+            //   } catch (error) {
+            //     showError(error);
+            //   } finally {
+            //     setSubmitting(false);
+            //   }
+            // })();
+            return router.push(pageUrls.Admin);
           }}
         >
           {({ isSubmitting }) => {

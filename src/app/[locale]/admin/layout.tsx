@@ -27,4 +27,5 @@ function LayoutAdmin({ children }: { children?: React.ReactNode }) {
   );
 }
 
-export default withPrivate(LayoutAdmin);
+// export default withPrivate(LayoutAdmin);
+export default LayoutAdmin;

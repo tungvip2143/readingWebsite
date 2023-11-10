@@ -15,4 +15,5 @@ const AdminPage = () => {
   );
 };
 
-export default withPrivate(withAuthorization(AdminPage, [Roles.ADMIN]));
+export default AdminPage;
+// export default withPrivate(withAuthorization(AdminPage, [Roles.ADMIN]));
