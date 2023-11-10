@@ -2,7 +2,7 @@ import CommonStylesClient from 'components/Client/CommonStylesClient';
 import React from 'react';
 import CardHomePage from './components/CardHomePage';
 import { Article } from 'modules/article/article.interface';
-import { Topic } from 'constants/common';
+import { MAX_HEIGHT_NAVBAR, Topic } from 'constants/common';
 
 const data: Article[] = [
   {
@@ -99,7 +99,9 @@ const data: Article[] = [
 ];
 const HomePage = () => {
   return (
-    <CommonStylesClient.Box sx={{ margin: '1.5rem 0 1.5rem 1.5rem' }}>
+    <CommonStylesClient.Box
+      sx={{ margin: `${MAX_HEIGHT_NAVBAR}px 0 1.5rem 1.5rem`, paddingTop: '2rem' }}
+    >
       <CommonStylesClient.Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
         {data?.map((item) => {
           return <CardHomePage data={item} key={item?.id} />;

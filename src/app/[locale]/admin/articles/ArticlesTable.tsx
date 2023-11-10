@@ -127,9 +127,7 @@ const Article = (props: ArticleProps) => {
       id: 'titleArticle',
       Cell: (row: Article) => {
         const email = row?.titleArticle || '';
-        return (
-          <CommonStyles.Typography sx={{ fontWeight: '700' }}>{email}</CommonStyles.Typography>
-        );
+        return <CommonStyles.Typography>{email}</CommonStyles.Typography>;
       },
     },
     {
@@ -137,9 +135,7 @@ const Article = (props: ArticleProps) => {
       id: 'createAt',
       Cell: (row: Article) => {
         const createAt = moment(row?.createdAt).format(DEFAULT_FORMAT_DATE) || '';
-        return (
-          <CommonStyles.Typography sx={{ fontWeight: '700' }}>{createAt}</CommonStyles.Typography>
-        );
+        return <CommonStyles.Typography>{createAt}</CommonStyles.Typography>;
       },
     },
     {

@@ -6,7 +6,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import IconButton from '@mui/material/IconButton';
-import CommonStyles from '.';
+import CommonStyles from 'components/CommonStyles';
 import CommonIcons from 'components/CommonIconsMui';
 import useAuth from 'hooks/useAuth';
 
@@ -34,7 +34,8 @@ function AccountMenu() {
   return (
     <React.Fragment>
       <CommonStyles.Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <CommonStyles.Tooltip title={t('accountSettings')}>
+        {/* <CommonStyles.Tooltip title={t('accountSettings')}> */}
+        <CommonStyles.Tooltip title=''>
           <IconButton
             onClick={handleClick}
             size='small'
@@ -81,19 +82,19 @@ function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        {/* <MenuItem onClick={handleClose}>
           <Avatar /> {t('profile')}
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Avatar /> {t('myAccount')}
-        </MenuItem>
-        <CommonStyles.Divider />
-        <MenuItem onClick={handleClose}>
+        </MenuItem> */}
+        {/* <CommonStyles.Divider /> */}
+        {/* <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <CommonIcons.SettingsIcon fontSize='small' />
           </ListItemIcon>
           {t('settings')}
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <CommonIcons.LogoutIcon fontSize='small' />

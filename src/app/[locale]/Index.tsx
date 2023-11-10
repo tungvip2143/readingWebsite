@@ -14,19 +14,19 @@ type Props = {};
 export default function Index(props: Props) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DefaultLayoutCient>
-        <DefaultLayoutHome>
-          <CommonStyles.Box
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: WIDTH_SIDEBAR,
-            }}
-          >
-            <HomePage />
-          </CommonStyles.Box>
-        </DefaultLayoutHome>
-      </DefaultLayoutCient>
+      {/* <DefaultLayoutCient> */}
+      <DefaultLayoutHome>
+        <CommonStyles.Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: WIDTH_SIDEBAR,
+          }}
+        >
+          <HomePage />
+        </CommonStyles.Box>
+      </DefaultLayoutHome>
+      {/* </DefaultLayoutCient> */}
     </LocalizationProvider>
   );
 }

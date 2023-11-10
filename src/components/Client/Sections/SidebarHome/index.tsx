@@ -75,7 +75,7 @@ export const RenderConntentSidebar = ({ isOpenDrawer }: SidebarContent) => {
       )}
       {listSidebar?.map((item) => {
         return (
-          <List>
+          <List key={item?.id}>
             <ListItem disablePadding>
               <ListItemButton onClick={handleNavigate(item?.path)}>
                 <ListItemIcon>{item.icon}</ListItemIcon>

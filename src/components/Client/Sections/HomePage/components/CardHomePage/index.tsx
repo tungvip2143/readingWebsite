@@ -22,10 +22,10 @@ const CardHomePage = ({ data }: Props) => {
   return (
     <Card
       sx={{
-        maxWidth: '24rem',
+        maxWidth: '22rem',
         borderRadius: '0.75rem',
-        display: 'flex',
-        flexDirection: 'column',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
         gap: 1,
         cursor: 'pointer',
       }}

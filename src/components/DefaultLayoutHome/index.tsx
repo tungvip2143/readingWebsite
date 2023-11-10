@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import CommonStylesClient from 'components/Client/CommonStylesClient';
-import { Roles } from 'constants/common';
+import { MAX_HEIGHT_NAVBAR, Roles } from 'constants/common';
 import useAuth from 'hooks/useAuth';
 import pageUrls from 'constants/pageUrls';
 import { useRouter } from 'next/navigation';
@@ -32,6 +32,8 @@ function DefaultLayoutHome({ children }: { children: React.ReactNode }) {
   //! Render
   return (
     <CommonStylesClient.Box sx={{ position: 'relative' }}>
+      <Header />
+      <CommonStylesClient.Toolbar sx={{ height: MAX_HEIGHT_NAVBAR }} />
       {!isTablet && <SidebarHome />}
       {children}
     </CommonStylesClient.Box>

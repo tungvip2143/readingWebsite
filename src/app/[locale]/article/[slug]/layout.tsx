@@ -3,18 +3,20 @@
 import React, { useEffect } from 'react';
 import CommonStylesClient from 'components/Client/CommonStylesClient';
 import { MAX_HEIGHT_NAVBAR, Roles } from 'constants/common';
-import Footer from 'components/Client/Sections/Footer';
 import useAuth from 'hooks/useAuth';
 import pageUrls from 'constants/pageUrls';
 import { useRouter } from 'next/navigation';
+import SidebarHome from 'components/Client/Sections/SidebarHome';
+import useCheckResolution from 'hooks/useCheckResolution';
 import Header from 'components/Client/Sections/Header';
 
-function DefaultLayoutCient({ children }: { children: React.ReactNode }) {
+function DefaultLayoutHome({ children }: { children: React.ReactNode }) {
   //! State
   const auth = useAuth();
   const router = useRouter();
   const isLogged = auth.isLogged;
   const role = auth?.user?.userType;
+  const { isTablet } = useCheckResolution();
 
   useEffect(() => {
     if (role === Roles.ADMIN) {
@@ -30,12 +32,11 @@ function DefaultLayoutCient({ children }: { children: React.ReactNode }) {
   //! Render
   return (
     <CommonStylesClient.Box sx={{ position: 'relative' }}>
-      {/* <Header /> */}
+      <Header />
       <CommonStylesClient.Toolbar sx={{ height: MAX_HEIGHT_NAVBAR }} />
       {children}
-      <Footer />
     </CommonStylesClient.Box>
   );
 }
 
-export default DefaultLayoutCient;
+export default DefaultLayoutHome;
