@@ -98,6 +98,7 @@ const ArticleDetail = () => {
   //! State
   const createMarkup = () => ({ __html: data?.contentArticle });
   //! Function
+
   //! Render
   return (
     <CommonStylesClient.Box
