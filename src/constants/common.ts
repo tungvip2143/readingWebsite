@@ -1,8 +1,9 @@
 import GotuLogo from '../../public/images/Mediwey _magazine.jpg';
 export const DEFAULT_ROW_PER_PAGE = 20;
 export const TIMEOUT_TO_UNMOUNT_MODAL = 500;
-export const MAX_WIDTH_CONTAINER = 1200;
-export const MAX_HEIGHT_NAVBAR = 96;
+export const MAX_WIDTH_CONTAINER = 900;
+export const MAX_HEIGHT_NAVBAR = 72;
+export const WIDTH_SIDEBAR = '20%';
 export const START_PAGE = 1;
 export const DEFAULT_FORMAT_DATE = 'DD/MM/yyyy';
 
@@ -70,4 +71,14 @@ export enum modalAction {
 export enum Roles {
   ADMIN = 'ADMIN',
   USER = 'USER',
+}
+
+export enum Topic {
+  EVENTS = 'Events',
+  THREE_F = '3F',
+  TOP_PLUS = 'Top +',
+  THE_FACE_DEWEY = 'The face Dewey',
+  SHOCK = 'Shock',
+  STUDY_CORNER = 'Study corner',
+  CHARITY = 'Charity',
 }

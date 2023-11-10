@@ -1,4 +1,4 @@
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import pageUrls from 'constants/pageUrls';
 import { useTranslations } from 'next-intl';
 import CommonIconsClient from 'components/Client/CommonIcons';

@@ -12,6 +12,7 @@ import { showError } from 'helpers/toast';
 import ArticleModel from 'models/article.model';
 import { useGet } from 'stores/useStore';
 import cachedKeys from 'constants/cachedKeys';
+import { ArticleBackground } from 'modules/article/article.interface';
 
 interface Props {
   idArticle?: number;
@@ -23,7 +24,7 @@ export interface FormArticleValues {
   titleAritcle?: string;
   subTitleArticle?: string;
   topic?: number;
-  articleBackground?: string;
+  articleBackground?: ArticleBackground;
   contentArticle?: string;
   isHaveSubtitle?: boolean;
 }

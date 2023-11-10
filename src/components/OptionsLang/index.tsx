@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Lang } from 'i18nOptions';
 import { usePathname, useRouter } from 'next/navigation';
 import CommonStyles from 'components/CommonStyles';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import { useTheme } from '@mui/material';
 import CommonStylesClient from 'components/Client/CommonStylesClient';
 import { removeLangFromPathname } from 'helpers/common';

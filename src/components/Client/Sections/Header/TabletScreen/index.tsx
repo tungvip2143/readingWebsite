@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { AppBar, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
+import Drawer from '@mui/material/Drawer';
 import { usePathname, useRouter } from 'next/navigation';
 import CommonIcons from 'components/CommonIconsMui';
 import CommonStylesClient from 'components/Client/CommonStylesClient';
@@ -10,14 +11,13 @@ import useAuth from 'hooks/useAuth';
 import SearchAndFilters from 'components/SearchAndFilters';
 import FormikField from 'components/FormikField';
 import CustomFields from 'components/CustomFields';
+import { RenderConntentSidebar } from '../../SidebarHome';
 import useCheckResolution from 'hooks/useCheckResolution';
-import HeaderTablet from './TabletScreen';
-import Link from 'next/link';
 
 export interface SearchAndFiltersProps {
   textSearch?: string;
 }
-const Header = () => {
+const HeaderTablet = () => {
   //! State
   const t = useTranslations();
   const theme = useTheme();
@@ -26,10 +26,38 @@ const Header = () => {
   const auth = useAuth();
   const { isTablet } = useCheckResolution();
 
+  const [mobileOpen, setMobileOpen] = React.useState(false);
   const initialSearch: SearchAndFiltersProps = {
     textSearch: '',
   };
   //! Function
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+  const renderDrawer = () => {
+    return (
+      <CommonStylesClient.Box onClick={handleDrawerToggle}>
+        <RenderConntentSidebar isOpenDrawer={mobileOpen} />
+      </CommonStylesClient.Box>
+    );
+  };
+
+  const renderMenuIcon = () => {
+    return (
+      <CommonStylesClient.Button
+        isIconButton
+        aria-label='open drawer'
+        edge='end'
+        sx={{
+          color: theme.colors?.black,
+          cursor: 'pointer',
+        }}
+        onClick={handleDrawerToggle}
+      >
+        <CommonIcons.MenuIcon />
+      </CommonStylesClient.Button>
+    );
+  };
 
   const ButtonSearch = ({ textSearch }: SearchAndFiltersProps) => {
     const isHaveTextSearch = !!textSearch;
@@ -61,21 +89,18 @@ const Header = () => {
     );
   };
   //! Render
-  if (isTablet) {
-    return <HeaderTablet />;
-  }
   return (
     <CommonStylesClient.Box>
-      <AppBar elevation={1} component='nav' sx={{ backgroundColor: 'rgb(255 255 255)' }}>
+      <CommonStylesClient.Box component='nav'>
         <CommonStylesClient.Box
-          sx={{ display: 'flex', justifyContent: 'space-between', padding: '1rem' }}
+          sx={{ display: 'flex', justifyContent: 'space-between', margin: '1rem' }}
         >
-          <Link href='/' style={{ textDecoration: 'none' }}>
+          <CommonStylesClient.Box sx={{ display: 'flex', justifyContent: 'center', gap: 3 }}>
+            {renderMenuIcon()}
             <CommonStylesClient.Typography type='pcHeading3'>
               Mediwey magazine
             </CommonStylesClient.Typography>
-          </Link>
-
+          </CommonStylesClient.Box>
           <CommonStylesClient.Box sx={{}}>
             <SearchAndFilters
               hideResetButton
@@ -117,9 +142,28 @@ const Header = () => {
             />
           </CommonStylesClient.Box>
         </CommonStylesClient.Box>
-      </AppBar>
+        <Drawer
+          anchor='left'
+          variant='temporary'
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          transitionDuration={50}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: '17rem',
+              backgroundColor: `${theme?.colors?.bggray200}`,
+            },
+          }}
+        >
+          {renderDrawer()}
+        </Drawer>
+      </CommonStylesClient.Box>
     </CommonStylesClient.Box>
   );
 };
 
-export default Header;
+export default HeaderTablet;

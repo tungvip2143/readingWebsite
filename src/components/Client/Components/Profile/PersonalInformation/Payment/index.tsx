@@ -1,5 +1,5 @@
 import { Grid, useTheme } from '@mui/material';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import CommonStyles from 'components/CommonStyles';
 import CustomFields from 'components/CustomFields';
 import { FastField } from 'formik';

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import CommonStyles from 'components/CommonStyles';
 import { useTheme } from '@mui/material';
 

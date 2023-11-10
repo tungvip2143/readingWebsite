@@ -20,8 +20,12 @@ const useCheckResolution = () => {
     };
   }, []);
 
-  const isMobile = useMemo(() => {
+  const isTablet = useMemo(() => {
     return width <= theme.breakpoints.values.md;
+  }, [valuesBreakPoint, width]);
+
+  const isMobile = useMemo(() => {
+    return width <= theme.breakpoints.values.sm;
   }, [valuesBreakPoint, width]);
 
   const isDesktop = useMemo(() => {
@@ -31,10 +35,11 @@ const useCheckResolution = () => {
   return useMemo(
     () => ({
       width,
+      isTablet,
       isMobile,
       isDesktop,
     }),
-    [width, isMobile, isDesktop]
+    [width, isTablet, isDesktop, isMobile]
   );
 };
 

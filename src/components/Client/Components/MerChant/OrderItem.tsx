@@ -2,7 +2,7 @@ import React from 'react';
 import CommonStylesClient from 'components/Client/CommonStylesClient';
 import { useTranslations } from 'next-intl';
 import { useTheme } from '@mui/material';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import moment from 'moment';
 import { ReservationVendor } from 'modules/reservationVendor/reservationVendor.interface';
 import { StatusReservationVendor } from 'constants/common';

@@ -3,7 +3,7 @@ import CommonStylesClient from 'components/Client/CommonStylesClient';
 import CommonStyles from 'components/CommonStyles';
 import CustomFields from 'components/CustomFields';
 import FormikField from 'components/FormikField';
-import { modalAction } from 'constants/common';
+import { Topic, modalAction } from 'constants/common';
 import { useTranslations } from 'next-intl';
 import React, { useRef } from 'react';
 import { FormArticleValues } from '../../AddForm';
@@ -18,31 +18,31 @@ interface Props {
 
 const optionsTopic = [
   {
-    label: 'Events',
+    label: Topic.EVENTS,
     value: 1,
   },
   {
-    label: '3F',
+    label: Topic.THREE_F,
     value: 2,
   },
   {
-    label: 'Top +',
+    label: Topic.TOP_PLUS,
     value: 3,
   },
   {
-    label: 'The face Dewey',
+    label: Topic.THE_FACE_DEWEY,
     value: 4,
   },
   {
-    label: 'Shock',
+    label: Topic.SHOCK,
     value: 5,
   },
   {
-    label: 'Study corner',
+    label: Topic.STUDY_CORNER,
     value: 6,
   },
   {
-    label: 'Charity',
+    label: Topic.CHARITY,
     value: 7,
   },
 ];
@@ -121,12 +121,12 @@ const FormAddArticle = ({ actionStatus, valueFormik, toggle }: Props) => {
             sx={{ mt: 2 }}
             isHasDelete
             renderChildren={
-              !!valueFormik?.articleBackground && (
+              !!valueFormik?.articleBackground?.url && (
                 <CommonStyles.Box sx={{ width: '100%', maxWidth: '15rem' }}>
                   <img
                     style={{ width: '100%' }}
                     alt='avatar-placeholder'
-                    src={fileToString(valueFormik?.articleBackground || '')}
+                    src={fileToString(valueFormik?.articleBackground?.url || '')}
                   />
                 </CommonStyles.Box>
               )

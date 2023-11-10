@@ -16,7 +16,7 @@ import DialogVerify from '../Components/Dialogs/DialogVerify';
 import { showError, showSuccess } from 'helpers/toast';
 import { RequestSignUp } from 'modules/signUp/signUp.interface';
 import { RequestVerifyRegisterCustomer } from 'modules/verifyRegisterCustomer/verifyRegisterCustomer.interface';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import { ProviderSocial, Method, Roles, OTPAction } from 'constants/common';
 import { IMG_URL } from 'constants/apiUrls';
 import { useRouter } from 'next/navigation';

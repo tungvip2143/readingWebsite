@@ -56,5 +56,13 @@
     "login": "Login",
     "register": "Register",
     "logout": "Logout"
+  },
+  "Login": {
+    "username": "Username",
+    "password": "Password",
+    "usernamePlaceholder": "Enter username",
+    "passwordPlaceholder": "Enter password",
+    "welcomeBack": "Welcome back!",
+    "submit": "Login"
   }
 }

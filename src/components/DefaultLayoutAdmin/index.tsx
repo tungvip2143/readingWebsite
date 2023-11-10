@@ -11,7 +11,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { debounce } from 'lodash';
 
 import pageUrls from 'constants/pageUrls';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import CommonStyles from 'components/CommonStyles';
 import { LOGO_IMAGE_PATH, Roles } from 'constants/common';
 import router from 'routes/router';

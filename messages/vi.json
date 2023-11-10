@@ -52,5 +52,13 @@
     "login": "Đăng nhập",
     "register": "Đăng ký",
     "logout": "Đăng xuất"
+  },
+  "Login": {
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "usernamePlaceholder": "Nhập tên đăng nhập",
+    "passwordPlaceholder": "Nhâp mật khẩu",
+    "welcomeBack": "Chào mừng bạn đến với trang quản trị",
+    "submit": "Đăng nhập"
   }
 }

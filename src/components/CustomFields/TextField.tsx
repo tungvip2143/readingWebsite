@@ -8,7 +8,7 @@ import MuiTextField, {
   TextFieldPropsSizeOverrides,
   TextFieldVariants,
 } from '@mui/material/TextField';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import { FieldInputProps, FormikProps, getIn } from 'formik';
 import { ReactNode, useMemo } from 'react';
 import useToggle from 'hooks/useToggle';

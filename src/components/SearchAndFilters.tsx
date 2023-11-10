@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import CommonStyles from 'components/CommonStyles';
 import { Form, Formik, FormikConfig, FormikProps, FormikValues } from 'formik';
 import { SxProps, useTheme } from '@mui/material';

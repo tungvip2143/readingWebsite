@@ -1,12 +1,17 @@
 import { AxiosResponse } from 'axios';
+import { Topic } from 'constants/common';
 import { PaginationFilters, ResponseCommon } from 'interfaces/common';
 
+export interface ArticleBackground {
+  url: string;
+  content: string;
+}
 export interface Article {
   id: number;
   titleArticle: string;
   subtitleArticle: string;
-  topicArticle: string;
-  articleBackground: string;
+  topicArticle: Topic;
+  articleBackground: ArticleBackground;
   contentArticle?: string;
   createdAt: string;
 }

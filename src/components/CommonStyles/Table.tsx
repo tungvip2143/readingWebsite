@@ -14,7 +14,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { visuallyHidden } from '@mui/utils';
 import { OrderType, TypeOfFilterHeader } from 'interfaces/common';
 import CommonStyles from '.';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import { SxProps, IconButtonProps } from '@mui/material';
 import { START_PAGE } from 'constants/common';
 import { RenderComponentHeadFilter } from './HeadFilters';

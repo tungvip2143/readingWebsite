@@ -17,7 +17,7 @@ import {
   RequestConfirmReservationVendor,
   ReservationVendor,
 } from 'modules/reservationVendor/reservationVendor.interface';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import ReservationVendorServices from 'modules/reservationVendor/reservationVendor.services';
 import DialogReviewVendor from '../Dialog/DialogReviewVendor';
 

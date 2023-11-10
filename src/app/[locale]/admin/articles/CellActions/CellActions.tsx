@@ -3,7 +3,7 @@ import useToggleDialog from 'hooks/useToggleDialog';
 import React from 'react';
 import DialogConfirm from 'components/DialogConfirm';
 import { useTranslations } from 'next-intl';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import { useTheme } from '@mui/material';
 import DialogViewDetails from '../Dialog/DialogViewDetails';
 import { Article } from 'modules/article/article.interface';

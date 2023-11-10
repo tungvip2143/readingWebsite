@@ -7,7 +7,7 @@ import CommonStyles from 'components/CommonStyles';
 import { DEFAULT_FORMAT_DATE } from 'constants/common';
 
 import dayjs from 'dayjs';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import { isNull } from 'lodash';
 interface DatePickerFieldI {
   type?: string;

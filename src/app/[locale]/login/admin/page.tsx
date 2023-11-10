@@ -9,7 +9,7 @@ import * as Yup from 'yup';
 import pageUrls from 'constants/pageUrls';
 import CustomFields from 'components/CustomFields';
 import CommonStyles from 'components/CommonStyles';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import useAuth from 'hooks/useAuth';
 import { LOGO_IMAGE_PATH, Roles } from 'constants/common';
 import { showError } from 'helpers/toast';

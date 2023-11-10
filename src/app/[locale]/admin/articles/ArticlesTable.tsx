@@ -9,7 +9,7 @@ import { Article } from 'modules/article/article.interface';
 import SearchAndFilters from 'components/SearchAndFilters';
 import { FastField } from 'formik';
 import CustomFields from 'components/CustomFields';
-import CommonIcons from 'components/CommonIcons';
+import CommonIcons from 'components/CommonIconsMui';
 import CellActions from './CellActions/CellActions';
 import useToggleDialog from 'hooks/useToggleDialog';
 import DialogViewDetails from './Dialog/DialogViewDetails';
@@ -19,7 +19,7 @@ import { convertActiveOrDeactive } from 'helpers/common';
 import { HeadCell } from 'components/CommonStyles/Table';
 import { IMG_URL } from 'constants/apiUrls';
 import moment from 'moment';
-import { DEFAULT_FORMAT_DATE } from 'constants/common';
+import { DEFAULT_FORMAT_DATE, Topic } from 'constants/common';
 
 interface ArticleProps {}
 export interface IInitialValues {
@@ -41,9 +41,11 @@ const dataMock: Article[] = [
     id: 1,
     titleArticle: 'Empowering Sisterhood: The Feminine Force Behind ‘The Marvels’',
     subtitleArticle: 'aa',
-    topicArticle: 'Events',
-    articleBackground:
-      'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+    topicArticle: Topic.EVENTS,
+    articleBackground: {
+      url: 'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+      content: '',
+    },
     contentArticle: 'aa',
     createdAt: '2021-12-10T03:00:00.000Z',
   },
@@ -51,9 +53,11 @@ const dataMock: Article[] = [
     id: 2,
     titleArticle: 'Storytelling With Impact: Plan A Production’s Cultural And Commercial Success',
     subtitleArticle: 'aa',
-    topicArticle: '3F',
-    articleBackground:
-      'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+    topicArticle: Topic.THREE_F,
+    articleBackground: {
+      url: 'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+      content: '',
+    },
     contentArticle: 'aa',
     createdAt: '2021-11-10T03:00:00.000Z',
   },
@@ -61,9 +65,11 @@ const dataMock: Article[] = [
     id: 3,
     titleArticle: 'Empowering Global Minds: How Finest Future Reshapes International Education',
     subtitleArticle: 'aa',
-    topicArticle: 'Charity',
-    articleBackground:
-      'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+    topicArticle: Topic.CHARITY,
+    articleBackground: {
+      url: 'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
+      content: '',
+    },
     contentArticle: 'aa',
     createdAt: '2021-10-10T03:00:00.000Z',
   },
@@ -112,7 +118,7 @@ const Article = (props: ArticleProps) => {
       id: 'articleBackground',
       Cell: (row: Article) => {
         // const avatar = `${IMG_URL}/${row?.articleBackground}` || '';
-        const avatar = row?.articleBackground || '';
+        const avatar = row?.articleBackground?.url || '';
         return <CommonStyles.Avatar sx={{ fontWeight: '700' }} src={avatar} />;
       },
     },
@@ -141,7 +147,7 @@ const Article = (props: ArticleProps) => {
       id: 'topicArticle',
       Cell: (row: Article) => {
         const topic = row?.topicArticle || '';
-        return <CommonStyles.Badge label={topic} category='purpleRoundOff' />;
+        return <CommonStyles.Badge label={topic} category={topic} />;
       },
       // renderFilters: ({ open, toggle }) => {
       //   return (
