@@ -13,6 +13,7 @@ import CustomFields from 'components/CustomFields';
 import useCheckResolution from 'hooks/useCheckResolution';
 import HeaderTablet from './TabletScreen';
 import Link from 'next/link';
+import { LOGO_IMAGE_PATH } from 'constants/common';
 
 export interface SearchAndFiltersProps {
   textSearch?: string;
@@ -68,9 +69,21 @@ const Header = () => {
     <CommonStylesClient.Box>
       <AppBar elevation={1} component='nav' sx={{ backgroundColor: 'rgb(255 255 255)' }}>
         <CommonStylesClient.Box
-          sx={{ display: 'flex', justifyContent: 'space-between', padding: '1rem' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
         >
-          <Link href='/' style={{ textDecoration: 'none' }}>
+          <Link
+            href='/'
+            style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 1 }}
+          >
+            <img
+              src={LOGO_IMAGE_PATH.src}
+              alt='logo'
+              style={{ width: '4.5rem', height: '4.5rem', marginLeft: '1rem' }}
+            />
             <CommonStylesClient.Typography type='pcHeading3'>
               Mediwey magazine
             </CommonStylesClient.Typography>

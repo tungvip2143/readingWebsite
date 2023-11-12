@@ -85,6 +85,7 @@ import IconReceipt from './Icons/IconReceipt';
 import IconArrowUp from './Icons/IconArrowUp';
 import IconFrame from './Icons/IconFrame';
 import IconVector from './Icons/IconVector';
+import IconHandShank from './Icons/IconHandShank';
 export default {
   IconCheckIn,
   IconCheckOut,
@@ -173,4 +174,5 @@ export default {
   IconArrowUp,
   IconFrame,
   IconVector,
+  IconHandShank,
 };

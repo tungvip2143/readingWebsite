@@ -45,6 +45,7 @@ const lightTheme = createTheme({
       greyBackground: grey['greyBackground'],
       textRedErrors: red['textRedErrors'],
       greyBorder: grey['greyBorder'],
+      bgnavy: bg['bgnavy'],
     },
     client: {
       cardDark: client['cardDark'],

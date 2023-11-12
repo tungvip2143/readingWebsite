@@ -102,7 +102,15 @@ const HomePage = () => {
     <CommonStylesClient.Box
       sx={{ margin: `${MAX_HEIGHT_NAVBAR}px 0 1.5rem 1.5rem`, paddingTop: '2rem' }}
     >
-      <CommonStylesClient.Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+      {/* <CommonStylesClient.Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}> */}
+      <CommonStylesClient.Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(22rem, 1fr))',
+          // flexWrap: 'wrap',
+          gap: 2,
+        }}
+      >
         {data?.map((item) => {
           return <CardHomePage data={item} key={item?.id} />;
         })}

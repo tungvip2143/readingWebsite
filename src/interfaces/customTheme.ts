@@ -8,6 +8,7 @@ export interface CustomTheme {
       greyBackground?: string;
       textRedErrors?: string;
       greyBorder?: string;
+      bgnavy?: string;
     };
     client: {
       cardDark?: string;

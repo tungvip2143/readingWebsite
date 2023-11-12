@@ -21,6 +21,7 @@ export default function Index(props: Props) {
             position: 'absolute',
             top: 0,
             left: WIDTH_SIDEBAR,
+            width: '80%',
           }}
         >
           <HomePage />

@@ -1,4 +1,4 @@
-import GotuLogo from '../../public/images/Mediwey _magazine.jpg';
+import GotuLogo from '../../public/images/Mediwey _magazine.png';
 export const DEFAULT_ROW_PER_PAGE = 20;
 export const TIMEOUT_TO_UNMOUNT_MODAL = 500;
 export const MAX_WIDTH_CONTAINER = 900;

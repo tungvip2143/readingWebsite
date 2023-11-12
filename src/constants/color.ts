@@ -209,6 +209,7 @@ export const red = {
 export const bg = {
   bgblack: 'rgb(0 0 0)',
   bgwhite: 'rgb(255 255 255)',
+  bgnavy: 'rgb(21 34 56)',
   bgslate50: 'rgb(248 250 252)',
   bgslate100: 'rgb(241 245 249)',
   bgslate200: 'rgb(226 232 240)',

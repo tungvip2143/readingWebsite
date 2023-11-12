@@ -14,6 +14,7 @@ import CommonStylesClient from 'components/Client/CommonStylesClient';
 import CommonIconsMui from 'components/CommonIconsMui';
 import { useRouter } from 'next/navigation';
 import { Topic, WIDTH_SIDEBAR } from 'constants/common';
+import CommonIcons from 'components/Client/CommonIcons';
 
 export interface SearchAndFiltersProps {
   textSearch?: string;
@@ -38,9 +39,9 @@ const listSidebar = [
     id: 6,
     name: Topic.STUDY_CORNER,
     path: '/Study-corner',
-    icon: <CommonIconsMui.SportsSoccerIcon />,
+    icon: <CommonIconsMui.SchoolIcon />,
   },
-  { id: 7, name: Topic.CHARITY, path: '/Charity', icon: <CommonIconsMui.SchoolIcon /> },
+  { id: 7, name: Topic.CHARITY, path: '/Charity', icon: <CommonIcons.IconHandShank /> },
 ];
 
 export const RenderConntentSidebar = ({ isOpenDrawer }: SidebarContent) => {
@@ -61,7 +62,7 @@ export const RenderConntentSidebar = ({ isOpenDrawer }: SidebarContent) => {
         position: 'fixed',
         padding: '0 1rem',
         width: isOpenDrawer ? '100%' : WIDTH_SIDEBAR,
-        backgroundColor: `${theme?.colors?.bggray200}`,
+        backgroundColor: `${theme?.colors?.custom?.bgnavy}`,
         height: '100vh',
       }}
     >
