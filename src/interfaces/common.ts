@@ -185,7 +185,7 @@ export interface User {
   isUpdateProfile: boolean;
   lastAccessToken: string | null;
   refreshToken: string | null;
-  userType: UserType;
+  role: UserType;
   userStatus: GalleryStatus;
   createdAt: string;
   updatedAt: string;

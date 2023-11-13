@@ -85,15 +85,15 @@ function AccountMenu(props: AccountMenu) {
 
   const isLogged = auth.isLogged || false;
   const name =
-    auth?.user?.userType !== Roles.VENDOR
+    auth?.user?.role !== Roles.VENDOR
       ? `${auth?.user?.firstName} ${auth?.user?.lastName}` || ''
       : `${auth?.user?.name}` || '';
 
   const avatar =
-    auth?.user?.userType !== Roles.VENDOR ? auth?.user?.avatar || '' : auth?.user?.thumbnail || '';
+    auth?.user?.role !== Roles.VENDOR ? auth?.user?.avatar || '' : auth?.user?.thumbnail || '';
   const phone = `0${auth?.user?.phone}` || '';
   const user = auth?.user;
-  const isCustomer = auth?.user?.userType === Roles.CUSTOMER;
+  const isCustomer = auth?.user?.role === Roles.CUSTOMER;
 
   const { filters } = useFiltersHandler({
     page: undefined,
@@ -140,9 +140,7 @@ function AccountMenu(props: AccountMenu) {
       label: t('Account.profile'),
       showCount: isLogged,
       href:
-        auth.user?.userType === Roles.CUSTOMER
-          ? pageUrls.Customer.Profile
-          : pageUrls.Articles.Profile,
+        auth.user?.role === Roles.CUSTOMER ? pageUrls.Customer.Profile : pageUrls.Articles.Profile,
       icon: <CommonIconsClient.IconProfileUser />,
     },
   ];
@@ -204,7 +202,7 @@ function AccountMenu(props: AccountMenu) {
   };
 
   const renderlistMenuAccount = () => {
-    if (auth.user?.userType === Roles.TOUR_GUIDE) {
+    if (auth.user?.role === Roles.TOUR_GUIDE) {
       return (
         <CommonStylesClient.Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {listMenuAccount?.slice(3, 4)?.map((item) => {
@@ -222,10 +220,10 @@ function AccountMenu(props: AccountMenu) {
         </CommonStylesClient.Box>
       );
     }
-    if (auth.user?.userType === Roles.VENDOR) {
+    if (auth.user?.role === Roles.VENDOR) {
       return undefined;
     }
-    if (auth.user?.userType === Roles.CUSTOMER) {
+    if (auth.user?.role === Roles.CUSTOMER) {
       return (
         <CommonStylesClient.Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {listMenuAccount?.slice()?.map((item) => {
@@ -749,7 +747,7 @@ function AccountMenu(props: AccountMenu) {
       <CommonStyles.Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <CommonStyles.Tooltip title={isLogged ? t('Account.accountSettings') : tIndex('login')}>
           {isLogged ? (
-            user?.userType === Roles.CUSTOMER || user?.userType === Roles.ADMIN ? (
+            user?.role === Roles.CUSTOMER || user?.role === Roles.ADMIN ? (
               <IconButton
                 onClick={handleClick}
                 size='small'

@@ -22,18 +22,17 @@ export default function Login() {
   const theme = useTheme();
   const auth = useAuth();
 
-  const role = auth?.user?.userType;
+  const role = auth?.user?.role;
   const isLogining = auth?.isLogining;
   const isLogged = auth?.isLogged;
 
   useEffect(() => {
     // Check to redirect to the page with corresponding role
-    if (isLogged && !!role) {
-      const redirectHandler = new Map<Roles, () => void>();
-      // redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
-
-      // redirectHandler.get(role)?.();
-    }
+    // if (isLogged && !!role) {
+    //   const redirectHandler = new Map<Roles, () => void>();
+    //   redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
+    //   redirectHandler.get(role)?.();
+    // }
   }, [isLogged, role]);
 
   if (!isLogining && isLogged) {
@@ -86,7 +85,7 @@ export default function Login() {
             //     setSubmitting(true);
             //     if (error) setError(undefined);
             //     auth?.signIn({
-            //       username: values.username,
+            //       identifier: values.username,
             //       password: values.password,
             //     });
             //   } catch (error) {

@@ -79,10 +79,13 @@ export const RenderConntentSidebar = ({ isOpenDrawer }: SidebarContent) => {
           <List key={item?.id}>
             <ListItem disablePadding>
               <ListItemButton onClick={handleNavigate(item?.path)}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemIcon sx={{ color: `${theme.colors?.white}` }}>{item.icon}</ListItemIcon>
                 <ListItemText
                   primary={
-                    <CommonStylesClient.Typography type='text16'>
+                    <CommonStylesClient.Typography
+                      type='text16'
+                      sx={{ color: `${theme.colors?.white}` }}
+                    >
                       {item.name}
                     </CommonStylesClient.Typography>
                   }

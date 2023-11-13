@@ -69,8 +69,8 @@ export enum modalAction {
 }
 
 export enum Roles {
-  ADMIN = 'ADMIN',
-  USER = 'USER',
+  ADMIN = 1,
+  USER = 2,
 }
 
 export enum Topic {

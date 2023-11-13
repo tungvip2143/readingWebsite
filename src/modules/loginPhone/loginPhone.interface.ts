@@ -15,7 +15,7 @@ import { Method } from 'constants/common';
 //   gender: Gender;
 //   lastAccessToken: string;
 //   refreshToken: string | null;
-//   userType: Roles;
+//   role: Roles;
 //   userStatus: UserStatus;
 //   createdAt: Date | string;
 //   updatedAt: Date | string;

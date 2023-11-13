@@ -1,29 +1,23 @@
 import { AxiosResponse } from 'axios';
-import { Gender, Roles, UserStatus } from 'constants/common';
+import { Roles } from 'constants/common';
 
 export interface IUser {
-  id: number;
-  username: string;
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  phone: string | number;
+  _id: number;
+  deleted_at: null | string;
   email: string;
-  avatar: string;
-  gender: Gender;
-  lastAccessToken: string;
-  refreshToken: string | null;
-  userType: Roles;
-  userStatus: UserStatus;
-  createdAt: Date | string;
-  updatedAt: Date | string;
-  phoneCode?: string;
-  name?: string;
-  thumbnail?: string;
+  fullname: string;
+  phonenumber: string;
+  date_of_birth: string;
+  gender: number;
+  role: number;
+  isVerify: boolean;
+  isBlock: boolean;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type RequestLogin = {
-  username: string;
+  identifier: string;
   password: string;
 };
 

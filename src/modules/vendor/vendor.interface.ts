@@ -48,7 +48,7 @@ export interface Vendor {
   phoneCode: PhoneCode;
   systemPrice: number;
   type: string;
-  userType?: Roles;
+  role?: Roles;
   firstName?: string;
   lastName?: string;
   avatar?: string;
@@ -95,7 +95,7 @@ export interface User {
   isVerifyOtp?: boolean;
   lastAccessToken?: null;
   refreshToken?: null;
-  userType?: string;
+  role?: string;
   userStatus?: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;

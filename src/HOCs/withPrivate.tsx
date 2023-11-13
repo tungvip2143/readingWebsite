@@ -8,7 +8,7 @@ import { Roles } from 'constants/common';
 export const ComponentWrapper = ({ children }: { children: React.ReactNode }) => {
   const auth = useAuth();
   const isLogged = auth.isLogged;
-  const role = auth?.user?.userType;
+  const role = auth?.user?.role;
   const router = useRouter();
 
   useEffect(() => {

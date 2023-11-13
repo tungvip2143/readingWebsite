@@ -15,7 +15,7 @@ function DefaultLayoutHome({ children }: { children: React.ReactNode }) {
   const auth = useAuth();
   const router = useRouter();
   const isLogged = auth.isLogged;
-  const role = auth?.user?.userType;
+  const role = auth?.user?.role;
   const { isTablet } = useCheckResolution();
 
   useEffect(() => {

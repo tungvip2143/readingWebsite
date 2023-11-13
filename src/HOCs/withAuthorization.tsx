@@ -13,7 +13,7 @@ export const ComponentWrapper = ({
   roles: Roles[];
 }) => {
   const auth = useAuth();
-  const roleFromSession = auth.user?.userType;
+  const roleFromSession = auth.user?.role;
 
   if (roleFromSession && roles.includes(roleFromSession)) {
     return <Fragment>{children}</Fragment>;
