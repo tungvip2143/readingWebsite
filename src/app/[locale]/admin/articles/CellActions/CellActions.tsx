@@ -35,7 +35,7 @@ const CellActions = (props: ICellActions) => {
 
   const handleDelete = async () => {
     try {
-      const response = await articleServices.deleteArticle({ id: article?.id });
+      const response = await articleServices.deleteArticle({ id: article?._id });
       if (response.status === 200 || response.status === 201) {
         showSuccess(t('Common.success'));
         refetchListArticle();
@@ -49,7 +49,7 @@ const CellActions = (props: ICellActions) => {
   return (
     <>
       {shouldRenderEdit && (
-        <DialogViewDetails isOpen={openEdit} toggle={toggleEdit} id={article?.id} />
+        <DialogViewDetails isOpen={openEdit} toggle={toggleEdit} id={article?._id} />
       )}
       {shouldRenderDelete && (
         <DialogConfirm

@@ -2,16 +2,16 @@ import { RequestConfirmReservationVendor } from 'modules/reservationVendor/reser
 import { RequestDeleteTourGuideSubscribe } from 'modules/tourGuideSubscribe/tourGuideSubscribe.interface';
 import { RequestDeleteVendorSubscribe } from 'modules/vendorSubscribe/vendorSubscribe.interface';
 
+// const BASE_URL = `${process.env.NEXT_PUBLIC_ROOT_URL}/api/v1`;
 const BASE_URL = `${process.env.NEXT_PUBLIC_ROOT_URL}`;
-
 export const IMG_URL = process.env.NEXT_PUBLIC_ROOT_URL;
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   LOGIN: `${BASE_URL}/login`,
   REGISTER: `${BASE_URL}/auth/register`,
-  UPLOAD_FILE_SINGLE: `${BASE_URL}/upload/single`,
-  ARTICLE: `${BASE_URL}/tour-guide`,
+  UPLOAD_FILE_SINGLE: `${BASE_URL}/upload`,
+  ARTICLE: `${BASE_URL}/article`,
   UPLOAD: {
     MULTIPLE: `${BASE_URL}/upload`,
   },

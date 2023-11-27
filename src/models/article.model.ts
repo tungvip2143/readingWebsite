@@ -1,27 +1,36 @@
 import { FormArticleValues } from 'app/[locale]/admin/articles/Dialog/AddForm';
 import { IMG_URL } from 'constants/apiUrls';
-import { Article } from 'modules/article/article.interface';
+import { Article, RequestCreateArticle } from 'modules/article/article.interface';
 
 class ArticleModel {
   static parseInitialValues(item?: Article) {
-    // const avatarImg = item?.articleBackground ? `${IMG_URL}/${item?.articleBackground}` : undefined;
-    const avatarImg = item?.articleBackground ? item?.articleBackground : undefined;
+    const avatarImg = item?.article_background
+      ? `${IMG_URL}/${item?.article_background}`
+      : undefined;
+    // const avatarImg = item?.article_background ? item?.article_background : undefined;
 
     const result = {
-      titleArticle: item?.titleArticle || '',
-      subtitleArticle: item?.subtitleArticle || '',
+      titleArticle: item?.title || '',
+      subtitleArticle: item?.sub_title || '',
       articleBackground: avatarImg,
-      topicArticle: item?.topicArticle || undefined,
-      contentArticle: item?.contentArticle || '',
+      topic: item?.topic || undefined,
+      contentArticle: item?.content || '',
+      isHaveSubtitle: !!item?.sub_title,
     };
 
     return result as FormArticleValues;
   }
 
   static parseBodyToRequest(value: FormArticleValues, avatar?: string) {
-    const result = {};
+    const result = {
+      title: value?.titleArticle,
+      sub_title: value?.subtitleArticle,
+      topic: value?.topic,
+      article_background: avatar,
+      content: value?.contentArticle,
+    };
 
-    return result;
+    return result as RequestCreateArticle;
   }
 }
 

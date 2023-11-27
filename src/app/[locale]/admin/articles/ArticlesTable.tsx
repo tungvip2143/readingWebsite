@@ -24,56 +24,20 @@ import { DEFAULT_FORMAT_DATE, Topic } from 'constants/common';
 interface ArticleProps {}
 export interface IInitialValues {
   page: number;
-  perPage: number;
-  sortField: string;
-  sortOrder: Order;
+  page_size: number;
+  sortField?: string;
+  sortOrder?: Order;
   textSearch?: string;
+  topic?: Topic;
 }
 const initialFilters: IInitialValues = {
   page: 1,
-  perPage: 10,
-  sortField: 'createdAt',
-  sortOrder: Order.desc,
+  page_size: 10,
+  // sortField: 'createdAt',
+  // sortOrder: Order.desc,
   textSearch: '',
 };
-const dataMock: Article[] = [
-  {
-    id: 1,
-    titleArticle: 'Empowering Sisterhood: The Feminine Force Behind ‘The Marvels’',
-    subtitleArticle: 'aa',
-    topicArticle: Topic.EVENTS,
-    articleBackground: {
-      url: 'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
-      content: '',
-    },
-    contentArticle: 'aa',
-    createdAt: '2021-12-10T03:00:00.000Z',
-  },
-  {
-    id: 2,
-    titleArticle: 'Storytelling With Impact: Plan A Production’s Cultural And Commercial Success',
-    subtitleArticle: 'aa',
-    topicArticle: Topic.THREE_F,
-    articleBackground: {
-      url: 'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
-      content: '',
-    },
-    contentArticle: 'aa',
-    createdAt: '2021-11-10T03:00:00.000Z',
-  },
-  {
-    id: 3,
-    titleArticle: 'Empowering Global Minds: How Finest Future Reshapes International Education',
-    subtitleArticle: 'aa',
-    topicArticle: Topic.CHARITY,
-    articleBackground: {
-      url: 'https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-cute-funny-kitten-and-puppy-image_2918764.jpg',
-      content: '',
-    },
-    contentArticle: 'aa',
-    createdAt: '2021-10-10T03:00:00.000Z',
-  },
-];
+
 const Article = (props: ArticleProps) => {
   //! State
   const {
@@ -89,12 +53,12 @@ const Article = (props: ArticleProps) => {
     setFilters,
   } = useFiltersHandler(initialFilters);
 
-  // const {
-  //   data: dataArticle,
-  //   isLoading,
-  //   isRefetching,
-  //   isFetchingPage,
-  // } = useGetListArticle(filters, { refetchKey: cachedKeys.refetchListArticle });
+  const {
+    data: dataArticle,
+    isLoading,
+    isRefetching,
+    isFetchingPage,
+  } = useGetListArticle(filters, { refetchKey: cachedKeys.refetchListArticle });
 
   const theme = useTheme();
   const t = useTranslations();
@@ -107,7 +71,7 @@ const Article = (props: ArticleProps) => {
   const listIsNotSortBy = ['ArticleArea'];
 
   //! Function
-  // const totalCount = dataArticle?.totalItems || 0;
+  const totalCount = dataArticle?.pagination?.itemCount || 0;
   const handleCreate = () => {
     toggleCreate();
   };
@@ -117,8 +81,8 @@ const Article = (props: ArticleProps) => {
       label: t('Articles.avatar'),
       id: 'articleBackground',
       Cell: (row: Article) => {
-        // const avatar = `${IMG_URL}/${row?.articleBackground}` || '';
-        const avatar = row?.articleBackground?.url || '';
+        const avatar = `${IMG_URL}/${row?.article_background}` || '';
+        // const avatar = row?.article_background || '';
         return <CommonStyles.Avatar sx={{ fontWeight: '700' }} src={avatar} />;
       },
     },
@@ -126,8 +90,10 @@ const Article = (props: ArticleProps) => {
       label: t('Articles.name'),
       id: 'titleArticle',
       Cell: (row: Article) => {
-        const email = row?.titleArticle || '';
-        return <CommonStyles.Typography>{email}</CommonStyles.Typography>;
+        const email = row?.title || '';
+        return (
+          <CommonStyles.Typography sx={{ fontWeight: '700' }}>{email}</CommonStyles.Typography>
+        );
       },
     },
     {
@@ -142,7 +108,7 @@ const Article = (props: ArticleProps) => {
       label: t('Articles.topic'),
       id: 'topicArticle',
       Cell: (row: Article) => {
-        const topic = row?.topicArticle || '';
+        const topic = row?.topic || '';
         return <CommonStyles.Badge label={topic} category={topic} />;
       },
       // renderFilters: ({ open, toggle }) => {
@@ -218,19 +184,18 @@ const Article = (props: ArticleProps) => {
         </CommonStyles.Box>
       </CommonStyles.Heading>
       <CommonStyles.Table
-        // isLoading={isLoading || isRefetching || isFetchingPage}
-        isLoading={false}
-        order={filters.sortOrder}
+        isLoading={isLoading || isRefetching || isFetchingPage}
+        // order={filters.sortOrder}
+        order={Order.desc}
         orderBy={filters.sortField}
         selected={rowsSelected}
         page={filters.page}
         headCells={headCell}
-        // totalCount={totalCount}
-        totalCount={5}
-        rows={dataMock || []}
+        totalCount={totalCount}
+        rows={dataArticle?.data || []}
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={changeRowPerPage}
-        rowsPerPage={filters.perPage}
+        rowsPerPage={filters.page_size}
         handleRequestSort={handleRequestSort}
         // handleSelectAllClick={handleSelectAll}
         // handleCheckBox={handleCheckBox}

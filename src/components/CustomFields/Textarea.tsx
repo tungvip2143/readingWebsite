@@ -9,8 +9,9 @@ interface Props {
   sx?: React.CSSProperties;
   fullWidth?: boolean;
   disabled?: boolean;
+  placeholder?: string;
 }
-const TextareaField = ({ field, form, sx, fullWidth, disabled, ...props }: Props) => {
+const TextareaField = ({ field, form, sx, fullWidth, disabled, placeholder, ...props }: Props) => {
   const theme = useTheme();
   const { name, value, onBlur, onChange } = field || {};
   const { errors, touched } = form || {};
@@ -39,6 +40,7 @@ const TextareaField = ({ field, form, sx, fullWidth, disabled, ...props }: Props
           ...sx,
         }}
         disabled={disabled}
+        placeholder={placeholder}
         {...props}
       />
       {isTouched && errorMessage && (

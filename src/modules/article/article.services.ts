@@ -13,6 +13,7 @@ import {
 } from './article.interface';
 import apiUrls from 'constants/apiUrls';
 import queryString from 'query-string';
+import { ResponseCommon } from 'interfaces/common';
 
 class ArticleServices {
   getListArticle(param: RequestGetListArticle): Promise<ResponseGetListArticle> {
@@ -32,18 +33,22 @@ class ArticleServices {
   }
 
   updateArticle({ id, body }: RequestUpdateArticle): Promise<ResponseUpdateArticle> {
-    return httpService.axios.patch(`${apiUrls.ARTICLE}/${id}/update-tour-guide`, body);
+    return httpService.axios.patch(`${apiUrls.ARTICLE}/${id}`, body);
   }
 
   deleteArticle({ id }: RequestDeleteArticle): Promise<ResponseDeleteArticle> {
     return httpService.axios.delete(`${apiUrls.ARTICLE}/${id}`);
   }
-  uploadFile(body: FormData) {
-    return httpService.axios.post(`${apiUrls.UPLOAD_FILE_SINGLE}`, body, {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-    });
+  uploadFile(body: { file: FormData; folderStorage: string }) {
+    return httpService.axios.post(
+      `${apiUrls.UPLOAD_FILE_SINGLE}/${body?.folderStorage}`,
+      body?.file,
+      {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      }
+    );
   }
 }
 

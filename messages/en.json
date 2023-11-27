@@ -42,7 +42,8 @@
     "search": "Search",
     "save": "Save",
     "reset": "Reset",
-    "writeHere": "Write {name} here..."
+    "writeHere": "Write {name} here...",
+    "noData": "No data"
   },
   "ActionModal": {
     "create": "create",

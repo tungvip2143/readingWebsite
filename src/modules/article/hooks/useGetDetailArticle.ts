@@ -12,7 +12,7 @@ const useGetDetailArticle = (id: number | string, isTrigger: boolean = false) =>
   }, []);
   const transformResponse = useCallback((response: ResponseGetDetailArticle) => {
     if (response) {
-      setData(response?.data?.data);
+      setData(response?.data);
     }
   }, []);
 

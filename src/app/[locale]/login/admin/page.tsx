@@ -28,11 +28,12 @@ export default function Login() {
 
   useEffect(() => {
     // Check to redirect to the page with corresponding role
-    // if (isLogged && !!role) {
-    //   const redirectHandler = new Map<Roles, () => void>();
-    //   redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
-    //   redirectHandler.get(role)?.();
-    // }
+    if (isLogged && !!role) {
+      const redirectHandler = new Map<Roles, () => void>();
+      redirectHandler.set(Roles.ADMIN, () => router.push(pageUrls.Admin));
+
+      redirectHandler.get(role)?.();
+    }
   }, [isLogged, role]);
 
   if (!isLogining && isLogged) {
@@ -80,21 +81,20 @@ export default function Login() {
             password: Yup.string().required(t('Validation.empty', { name: t(`Login.password`) })),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            // (async () => {
-            //   try {
-            //     setSubmitting(true);
-            //     if (error) setError(undefined);
-            //     auth?.signIn({
-            //       identifier: values.username,
-            //       password: values.password,
-            //     });
-            //   } catch (error) {
-            //     showError(error);
-            //   } finally {
-            //     setSubmitting(false);
-            //   }
-            // })();
-            return router.push(pageUrls.Admin);
+            (async () => {
+              try {
+                setSubmitting(true);
+                if (error) setError(undefined);
+                auth?.signIn({
+                  identifier: values.username,
+                  password: values.password,
+                });
+              } catch (error) {
+                showError(error);
+              } finally {
+                setSubmitting(false);
+              }
+            })();
           }}
         >
           {({ isSubmitting }) => {

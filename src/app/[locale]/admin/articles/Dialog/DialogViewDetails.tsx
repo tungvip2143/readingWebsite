@@ -15,7 +15,6 @@ interface IProps {
 const DialogViewDetails = (props: IProps) => {
   //! State
   const { isOpen, toggle, id, isCreate, isDetail } = props;
-
   const t = useTranslations();
   //! Function
   const tourGuideAction = React.useCallback(() => {

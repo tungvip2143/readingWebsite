@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import { isNumber, isString } from 'lodash';
 import { languages } from 'i18nOptions';
-import { IMAGE_REGEX, PaymentStatus, TourGuideStatus } from 'constants/common';
+import { IMAGE_REGEX } from 'constants/common';
 import moment from 'moment';
 import dayjs from 'dayjs';
 import { PhoneCode } from 'interfaces/common';
@@ -74,16 +74,16 @@ export const convertCurrencyToString = (currency: string) => {
   return currency.toString().replaceAll('.', '');
 };
 
-export const convertActiveOrDeactive = (value?: boolean) => {
-  switch (value) {
-    case true:
-      return TourGuideStatus.ACTIVE;
-    case false:
-      return TourGuideStatus.DEACTIVE;
-    default:
-      break;
-  }
-};
+// export const convertActiveOrDeactive = (value?: boolean) => {
+//   switch (value) {
+//     case true:
+//       return TourGuideStatus.ACTIVE;
+//     case false:
+//       return TourGuideStatus.DEACTIVE;
+//     default:
+//       break;
+//   }
+// };
 
 export const convertToDate = (value: Date | string) => {
   const formatDayMonthYear = moment(value).format('DD/MM/YYYY');
@@ -121,16 +121,16 @@ export const localeNumber = (
   return 'N/A';
 };
 
-export const paymentStatus = (status: string | undefined) => {
-  switch (status) {
-    case '00':
-      return PaymentStatus.SUCCESS;
-    case '02':
-      return PaymentStatus.FAIL;
-    default:
-      return PaymentStatus.PROCESSING;
-  }
-};
+// export const paymentStatus = (status: string | undefined) => {
+//   switch (status) {
+//     case '00':
+//       return PaymentStatus.SUCCESS;
+//     case '02':
+//       return PaymentStatus.FAIL;
+//     default:
+//       return PaymentStatus.PROCESSING;
+//   }
+// };
 
 export const snakeCaseToWords = (input: string) => {
   return input
@@ -222,20 +222,20 @@ export const formatPrice = (price: number) => {
   return price.toLocaleString(locales, options).replace('VND', 'VNĐ');
 };
 
-export const detectBrowserHidden = () => {
-  let hidden;
-  if (typeof document.hidden !== 'undefined') {
-    // Opera 12.10 and Firefox 18 and later support
-    hidden = 'hidden';
-  } else if (typeof document.msHidden !== 'undefined') {
-    hidden = 'msHidden';
-  } else if (typeof document.webkitHidden !== 'undefined') {
-    hidden = 'webkitHidden';
-  }
-  return {
-    isHidden: document[hidden],
-  };
-};
+// export const detectBrowserHidden = () => {
+//   let hidden;
+//   if (typeof document.hidden !== 'undefined') {
+//     // Opera 12.10 and Firefox 18 and later support
+//     hidden = 'hidden';
+//   } else if (typeof document.msHidden !== 'undefined') {
+//     hidden = 'msHidden';
+//   } else if (typeof document.webkitHidden !== 'undefined') {
+//     hidden = 'webkitHidden';
+//   }
+//   return {
+//     isHidden: document[hidden],
+//   };
+// };
 
 export const isImage = (url: string) => {
   return IMAGE_REGEX.test(url);

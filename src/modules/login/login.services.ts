@@ -4,7 +4,7 @@ import apiUrls from 'constants/apiUrls';
 import { ResponseCommon } from 'interfaces/common';
 
 class LoginService {
-  login(body: RequestLogin): Promise<ResponseCommon<ResponseLogin>> {
+  login(body: RequestLogin): Promise<ResponseLogin> {
     return httpService.axios.post(apiUrls.LOGIN, body);
   }
 }

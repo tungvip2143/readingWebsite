@@ -6,13 +6,15 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import FormAddArticle from './component/FormAddArticle';
 import { useTranslations } from 'next-intl';
-import { modalAction } from 'constants/common';
+import { Topic, modalAction } from 'constants/common';
 import useGetDetailArticle from 'modules/article/hooks/useGetDetailArticle';
-import { showError } from 'helpers/toast';
+import { showError, showSuccess } from 'helpers/toast';
 import ArticleModel from 'models/article.model';
 import { useGet } from 'stores/useStore';
 import cachedKeys from 'constants/cachedKeys';
 import { ArticleBackground } from 'modules/article/article.interface';
+import articleServices from 'modules/article/article.services';
+import { isString } from 'lodash';
 
 interface Props {
   idArticle?: number;
@@ -21,10 +23,10 @@ interface Props {
 }
 
 export interface FormArticleValues {
-  titleAritcle?: string;
-  subTitleArticle?: string;
-  topic?: number;
-  articleBackground?: ArticleBackground;
+  titleArticle?: string;
+  subtitleArticle?: string;
+  topic?: Topic;
+  articleBackground?: string;
   contentArticle?: string;
   isHaveSubtitle?: boolean;
 }
@@ -33,7 +35,6 @@ const AddForm = (props: Props) => {
   //! State
   const { idArticle, actionStatus, toggleAddform } = props;
   const { data, isLoading } = useGetDetailArticle(idArticle || 0, !!idArticle);
-
   const theme = useTheme();
   const t = useTranslations();
   const router = useRouter();
@@ -41,7 +42,6 @@ const AddForm = (props: Props) => {
 
   const isCreate = actionStatus === modalAction.CREATE;
   const isDetail = actionStatus === modalAction.DETAIL;
-
   const initialValues = ArticleModel.parseInitialValues(data);
 
   //! Validate
@@ -60,27 +60,54 @@ const AddForm = (props: Props) => {
       validationSchema={validationAddFormSchema}
       onSubmit={async (values, { setSubmitting }) => {
         setSubmitting(true);
+        const fileAvatar = values?.articleBackground;
         try {
           if (isCreate) {
-            // const response = await tourGuideServices.createArticle(requestPayload);
-            // refetchListArticle && refetchListArticle();
+            let avatar = '';
+            if (!!fileAvatar) {
+              const body = new FormData();
+              body.append('file', fileAvatar!);
+              const response = await articleServices.uploadFile({
+                file: body,
+                folderStorage: 'article',
+              });
+              avatar = response?.data;
+            }
+            const requestPayload = ArticleModel.parseBodyToRequest(values, avatar);
 
-            // if (response?.status === 200 || response?.status === 201) {
-            //   showSuccess(t('Common.success'));
-            //   toggleAddform && toggleAddform();
-            // }
+            const response = await articleServices.createArticle(requestPayload);
+            refetchListArticle && refetchListArticle();
+
+            if (response?.status === 200 || response?.status === 201) {
+              showSuccess(t('Common.success'));
+              toggleAddform && toggleAddform();
+            }
             return;
           }
           if (isDetail && !!idArticle) {
-            // const response = await tourGuideServices.updateArticle({
-            //   id: idArticle,
-            //   body: requestPayloadUpdate,
-            // });
-            // refetchListArticle && refetchListArticle();
-            // if (response?.status === 200 || response?.status === 201) {
-            //   showSuccess(t('Common.success'));
-            //   toggleAddform && toggleAddform();
-            // }
+            let avatar = '';
+            if (!!fileAvatar && !isString(fileAvatar)) {
+              const body = new FormData();
+              body.append('file', fileAvatar!);
+              const response = await articleServices.uploadFile({
+                file: body,
+                folderStorage: 'article',
+              });
+              avatar = response?.data;
+            } else {
+              avatar = fileAvatar?.split('8000/')[1] || '';
+            }
+            const requestPayload = ArticleModel.parseBodyToRequest(values, avatar);
+            const response = await articleServices.updateArticle({
+              id: idArticle,
+              body: requestPayload,
+            });
+            refetchListArticle && refetchListArticle();
+
+            if (response?.status === 200 || response?.status === 201) {
+              showSuccess(t('Common.success'));
+              toggleAddform && toggleAddform();
+            }
             return;
           }
         } catch (error) {

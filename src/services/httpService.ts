@@ -3,10 +3,9 @@ import { localStorageFunc } from './../helpers/common';
 import axios, { AxiosInstance } from 'axios';
 import { cloneDeep, isArray, isObject, isString } from 'lodash';
 import { Article } from 'modules/article/article.interface';
-import { Vendor } from 'modules/vendor/vendor.interface';
 
 export const KEY_TOKEN = 'dzb_auth';
-export const KEY_USER = 'accountLogin';
+export const KEY_USER = 'dzb_user';
 
 const iterateNestObject = (obj: { [key: string]: any }) => {
   Object.keys(obj).forEach((key) => {
@@ -92,7 +91,7 @@ class HttpService {
     localStorageFunc?.setItem(KEY_TOKEN, token);
   }
 
-  saveUserToStorage(user: IUser | Article | Vendor) {
+  saveUserToStorage(user: IUser | Article) {
     localStorageFunc?.setItem(KEY_USER, JSON.stringify(user));
   }
 

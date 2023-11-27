@@ -24,10 +24,11 @@ import { IInitialValues } from 'app/[locale]/admin/articles/ArticlesTable';
 const parseRequest = (filters: IInitialValues) => {
   return cloneDeep({
     page: filters.page,
-    perPage: filters.perPage,
-    sortField: filters.sortField,
-    sortOrder: filters.sortOrder,
-    textSearch: filters.textSearch,
+    page_size: filters.page_size,
+    // sortField: filters.sortField,
+    // sortOrder: filters.sortOrder,
+    topic: filters.topic,
+    title: filters.textSearch,
   });
 };
 
@@ -58,7 +59,6 @@ const useGetListArticle = (
           const nextFilters = parseRequest(filters);
 
           const response = await ArticleServices.getListArticle(nextFilters);
-
           resolve(response);
         } catch (error) {
           setError(error);
@@ -72,11 +72,11 @@ const useGetListArticle = (
     (response: ResponseGetListArticle) => {
       //* Check condition of response here to set data
       if (!isEmpty(response?.data)) {
-        setData(response?.data?.data);
+        setData(response?.data);
         setHasMore(!isEmpty(response?.data));
       }
     },
-    [filters.perPage]
+    [filters.page_size]
   );
 
   const fetchChangePage = useCallback(

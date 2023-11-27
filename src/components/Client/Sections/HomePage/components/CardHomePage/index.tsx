@@ -1,6 +1,7 @@
 import { Card, CardMedia, CardContent } from '@mui/material';
 import CommonStylesClient from 'components/Client/CommonStylesClient';
 import CommonStyles from 'components/CommonStyles';
+import { IMG_URL } from 'constants/apiUrls';
 import { Topic } from 'constants/common';
 import { Article } from 'modules/article/article.interface';
 import { useRouter } from 'next/navigation';
@@ -13,11 +14,10 @@ const CardHomePage = ({ data }: Props) => {
   //! State
   const router = useRouter();
 
-  //! Function
   const handleNavigate = (id?: number) => () => {
     router.push(`/article/${id}`);
   };
-
+  const article_background = `${IMG_URL}/${data?.article_background}`;
   //! Render
   return (
     <Card
@@ -29,17 +29,12 @@ const CardHomePage = ({ data }: Props) => {
         gap: 1,
         cursor: 'pointer',
       }}
-      onClick={handleNavigate(data?.id)}
+      onClick={handleNavigate(data?._id)}
     >
-      <CardMedia sx={{ height: 140 }} image={data?.articleBackground?.url} title='green iguana' />
+      <img style={{ width: '100%' }} src={article_background} alt='background' />
       <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-        <CommonStyles.Badge
-          label={data?.topicArticle}
-          category={data?.topicArticle || Topic.EVENTS}
-        />
-        <CommonStylesClient.Typography type='title20'>
-          {data?.titleArticle}
-        </CommonStylesClient.Typography>
+        <CommonStyles.Badge label={data?.topic} category={data?.topic || Topic.EVENTS} />
+        <CommonStylesClient.Typography type='title20'>{data?.title}</CommonStylesClient.Typography>
       </CardContent>
     </Card>
   );

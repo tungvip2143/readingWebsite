@@ -38,7 +38,8 @@
     "search": "Tìm kiếm",
     "save": "Lưu",
     "reset": "Làm mới",
-    "writeHere": "Viết {name} vào đây..."
+    "writeHere": "Viết {name} vào đây...",
+    "noData": "Không có dữ liệu"
   },
   "ActionModal": {
     "create": "Thêm mới",

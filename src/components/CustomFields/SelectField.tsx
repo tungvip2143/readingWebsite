@@ -45,7 +45,6 @@ const SelectField = ({
 }: SelectFieldProps) => {
   //! State
   const { name, value, onBlur, onChange } = field || {};
-
   const { errors, touched, setFieldValue, setFieldTouched } = form || {};
 
   const theme = useTheme();

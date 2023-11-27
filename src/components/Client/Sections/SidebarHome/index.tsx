@@ -25,23 +25,43 @@ export interface SidebarContent {
 }
 
 const listSidebar = [
-  { id: 1, name: Topic.EVENTS, path: '/Events', icon: <CommonIconsMui.CelebrationIcon /> },
-  { id: 2, name: Topic.THREE_F, path: '/3F', icon: <CommonIconsMui.SportsSoccerIcon /> },
-  { id: 3, name: Topic.TOP_PLUS, path: '/Top+', icon: <CommonIconsMui.CampaignIcon /> },
+  {
+    id: 1,
+    name: Topic.EVENTS,
+    path: `/${Topic.EVENTS}`,
+    icon: <CommonIconsMui.CelebrationIcon />,
+  },
+  {
+    id: 2,
+    name: Topic.THREE_F,
+    path: `/${Topic.THREE_F}`,
+    icon: <CommonIconsMui.SportsSoccerIcon />,
+  },
+  {
+    id: 3,
+    name: Topic.TOP_PLUS,
+    path: '/Top+',
+    icon: <CommonIconsMui.CampaignIcon />,
+  },
   {
     id: 4,
     name: Topic.THE_FACE_DEWEY,
-    path: '/The-face-Dewey',
+    path: '/TheFaceDewey',
     icon: <CommonIconsMui.FaceRetouchingNaturalIcon />,
   },
-  { id: 5, name: Topic.SHOCK, path: '/Shock', icon: <CommonIconsMui.WhatshotIcon /> },
+  { id: 5, name: Topic.SHOCK, path: `/${Topic.SHOCK}`, icon: <CommonIconsMui.WhatshotIcon /> },
   {
     id: 6,
     name: Topic.STUDY_CORNER,
-    path: '/Study-corner',
+    path: '/StudyCorner',
     icon: <CommonIconsMui.SchoolIcon />,
   },
-  { id: 7, name: Topic.CHARITY, path: '/Charity', icon: <CommonIcons.IconHandShank /> },
+  {
+    id: 7,
+    name: Topic.CHARITY,
+    path: `/${Topic.CHARITY}`,
+    icon: <CommonIcons.IconHandShank />,
+  },
 ];
 
 export const RenderConntentSidebar = ({ isOpenDrawer }: SidebarContent) => {

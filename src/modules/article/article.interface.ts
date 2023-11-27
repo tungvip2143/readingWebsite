@@ -6,40 +6,49 @@ export interface ArticleBackground {
   url: string;
   content: string;
 }
+export interface Pagination {
+  itemCount: number;
+  page_size: number;
+  pageCount: number;
+  page: number;
+  slNo: number;
+  true: boolean; // "true" is an unusual property name, please make sure it's intended
+  prevPage: number | null;
+  nextPage: number | null;
+}
 export interface Article {
-  id: number;
-  titleArticle: string;
-  subtitleArticle: string;
-  topicArticle: Topic;
-  articleBackground: ArticleBackground;
-  contentArticle?: string;
+  _id: number;
+  title: string;
+  sub_title: string;
+  topic: Topic;
+  article_background: string;
+  content?: string;
   createdAt: string;
 }
 export interface GetListArticle extends PaginationFilters {
   sortField?: string;
   sortOrder?: string;
-  textSearch?: string;
+  title?: string;
+  topic?: Topic;
 }
 export interface ArticleList {
-  items: Article[];
-  perPage: number;
-  total: number;
-  totalPage: number;
-  totalItems: number;
+  data: Article[];
+  pagination: Pagination;
 }
 
 export type RequestGetListArticle = GetListArticle;
 
-export type ResponseGetListArticle = AxiosResponse<ResponseCommon<ArticleList>>;
+export type ResponseGetListArticle = AxiosResponse<ArticleList>;
 
 export type RequestGetDetailArticle = string | number;
-export type ResponseGetDetailArticle = AxiosResponse<ResponseCommon<Article>>;
+export type ResponseGetDetailArticle = AxiosResponse<Article>;
 
 export type RequestCreateArticle = {
-  titleArticle: string;
-  topicArticle: string;
-  articleBackground: string;
-  contentArticle: string;
+  title: string;
+  sub_title: string;
+  topic: Topic;
+  article_background: string;
+  content: string;
 };
 
 export type ResponseCreateArticle = AxiosResponse<ResponseCommon<RequestCreateArticle>>;

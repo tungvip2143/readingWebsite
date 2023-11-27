@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { GalleryStatus, Gender, UserType, TypeFile } from 'constants/common';
+import { TypeFile } from 'constants/common';
 export interface PaginationFilters {
   page?: number;
   perPage?: number;
@@ -68,7 +68,7 @@ export interface Gallery {
   id: number;
   tourId: number | null;
   description: string | null;
-  status: GalleryStatus;
+
   createdAt: string;
   updatedAt: string;
   vendorId: number | null;
@@ -180,13 +180,12 @@ export interface User {
   email: string;
   cid: string | null;
   avatar: string;
-  gender: Gender;
+
   isVerifyOtp: boolean;
   isUpdateProfile: boolean;
   lastAccessToken: string | null;
   refreshToken: string | null;
-  role: UserType;
-  userStatus: GalleryStatus;
+
   createdAt: string;
   updatedAt: string;
   phoneEmergencyCode?: string;
