@@ -4,7 +4,7 @@ import { TINY_API } from 'constants/common';
 import React, { forwardRef, useEffect } from 'react';
 import { useState } from 'react';
 import { useFormikContext } from 'formik';
-import { IMG_URL } from 'constants/apiUrls';
+import apiUrls, { IMG_URL } from 'constants/apiUrls';
 
 interface BlobInfo {
   id: () => string;
@@ -35,7 +35,7 @@ const TinyMceCommon = forwardRef((props: Props, ref: any) => {
     new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.withCredentials = false;
-      xhr.open('POST', 'http://localhost:8000/upload/article');
+      xhr.open('POST', `${apiUrls.UPLOAD_FILE_SINGLE}/article`);
 
       xhr.upload.onprogress = (e) => {
         progress((e.loaded / e.total) * 100);
@@ -84,7 +84,7 @@ const TinyMceCommon = forwardRef((props: Props, ref: any) => {
           placeholder: placeholder,
           height: height || 200,
           plugins: 'link image media code table lists hr fullscreen preview visualblocks help ',
-          images_upload_url: 'http://localhost:8000/upload/article',
+          images_upload_url: `${apiUrls.UPLOAD_FILE_SINGLE}/article`,
           images_upload_handler: example_image_upload_handler,
           images_upload_base_path: `${IMG_URL}/`,
           // indentation: '20pt',
